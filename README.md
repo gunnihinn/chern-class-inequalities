@@ -1,6 +1,10 @@
 Higher Chern class inequalities
 ===============================
 
+The compiled pdf of the project is available at:
+
+    http://dl.dropboxusercontent.com/u/1963234/cci.pdf
+
 * Description of the project and progress so far
 
 This is an attempt to find inequalities between Chern classes on complex
