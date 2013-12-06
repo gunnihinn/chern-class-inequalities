@@ -1,7 +1,8 @@
 Higher Chern class inequalities
 ===============================
 
-The compiled pdf of the project is available [here](http://dl.dropboxusercontent.com/u/1963234/cci.pdf).
+The compiled pdf of the project is [here](http://dl.dropboxusercontent.com/u/1963234/cci.pdf).
+An archive of the references cited in the bibliography is [here](http://dl.dropboxusercontent.com/u/1963234/cci-refs.tar.gz).
 
 * Description of the project and progress so far
 

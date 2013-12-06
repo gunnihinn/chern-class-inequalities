@@ -14,14 +14,9 @@
 \setstretch{1.1}
 
 \title{Higher Chern class inequalities}
-\author{Gunnar \TH\'{o}r Magn\'{u}sson}
 
 \def\^#1{^{[#1]}}
-\def\ap#1{\alpha^{[#1]}}
-\def\wp#1{\omega^{[#1]}}
-\def\hp#1{h^{[#1]}}
-\def\lp#1{L^{[#1]}}
-\def\Lp#1{\Lambda^{[#1]}}
+\def\bw#1{\bigwedge{}^{\! #1}}
 \def\la{\langle}
 \def\ra{\rangle}
 \DeclareMathOperator{\tr}{tr}
@@ -30,8 +25,7 @@
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Hom}{Hom}
 \def\PP{\mathbb{P}}
-\def\skrun{\frac{i}{2\pi} \Theta}
-\def\bw#1{\bigwedge{}^{\! #1}}
+\def\curv{\frac{i}{2\pi} \Theta}
 
 \newtheorem{theo}{Theorem}[section]
 \newtheorem{prop}[theo]{Proposition}
@@ -42,11 +36,6 @@
 
 \begin{document}
 
-
-\begin{abstract}
-Here are all the ugly details that no one wants to see, where the t's are
-crossed and i's are dotted.
-\end{abstract}
 
 \maketitle 
 
@@ -73,7 +62,7 @@ an inequality between Chern classes on K\"ahler--Einstein manifolds, was
 then proved for semistable vector bundles over projective surfaces and
 finally extended to Hermite--Einstein vector bundles; the rough
 chronological order of its evolution is
-\cite{Chen-Ogiue,Bogomolov,Gieseker,Lubke} -- see also
+\cite{Chen-Ogiue,Miyaoka,Bogomolov,Gieseker,Lubke} -- see also
 \cite{Kobayashi,LubkeStab,Siu} for the link between Hermite--Einstein
 and semistable vector bundles.
 
@@ -171,7 +160,7 @@ rests on the following formula.
 \begin{prop}[{{\cite[Proposition~1.67]{Huy}}}]
 Let $u$ be a primitive $(p,q)$--form on $V$. Set $k = p+q$. Then
 $$
-    * \lp{j} u = (-1)^{k(k+1)/2} \lp{n-j-k} i^{p-q} u.
+    * L\^{j} u = (-1)^{k(k+1)/2} L\^{n-j-k} i^{p-q} u.
 $$
 \end{prop}
 
@@ -179,22 +168,22 @@ $$
 \begin{exam}
 If $u$ is a primitive $(p,q)$--form, then
 \begin{align*}
-\lvert \lp{j} u \rvert^2 \wp{n}
-= \lp{j} u \wedge * \lp{j} \overline{u}
-&= \lp{j} u \wedge (-1)^{k(k+1)/2} \lp{n-j-k} i^{q-p} \overline{u} \\
-&= u \wedge \tbinom{n-k}{j} (-1)^{k(k+1)/2} \lp{n-k} i^{q-p} \overline{u} \\
+\lvert L\^{j} u \rvert^2 \omega\^{n}
+= L\^{j} u \wedge * L\^{j} \overline{u}
+&= L\^{j} u \wedge (-1)^{k(k+1)/2} L\^{n-j-k} i^{q-p} \overline{u} \\
+&= u \wedge \tbinom{n-k}{j} (-1)^{k(k+1)/2} L\^{n-k} i^{q-p} \overline{u} \\
 &= \tbinom{n-k}{j} u \wedge * \overline{u}
-= \tbinom{n-k}{j} \lvert u \rvert^2 \wp{n},
+= \tbinom{n-k}{j} \lvert u \rvert^2 \omega\^{n},
 \end{align*}
-whose moral is that $\lvert \lp{j} u \rvert^2 = \tbinom{n-k}{j} \lvert u
-\rvert^2$. Taking $u = 1$ gives $|\wp{j}|^2 = \binom{n}{j}$.
+whose moral is that $\lvert L\^{j} u \rvert^2 = \tbinom{n-k}{j} \lvert u
+\rvert^2$. Taking $u = 1$ gives $|\omega\^{j}|^2 = \binom{n}{j}$.
 \end{exam}
 
 
-Now let $u$ be a $(p,p)$--form. Let $u = \sum_{j=0}^p \lp{p-j} u_j$ be its primitive decomposition, where each $u_j$ is a primitive $(j,j)$--form. This decomposition is orthogonal, so
+Now let $u$ be a $(p,p)$--form. Let $u = \sum_{j=0}^p L\^{p-j} u_j$ be its primitive decomposition, where each $u_j$ is a primitive $(j,j)$--form. This decomposition is orthogonal, so
 $$
 \lvert u \rvert^2
-= \sum_{j=0}^p \lvert \lp{p-j} u_j \rvert^2
+= \sum_{j=0}^p \lvert L\^{p-j} u_j \rvert^2
 = \sum_{j=0}^p \tbinom{n-2j}{p-j} \lvert u_j \rvert^2.
 $$
 
@@ -233,69 +222,69 @@ and $v_2^p \wedge \omega^{n-2p}$ is of the announced form by induction.
 
 \begin{prop}
     \label{prop:morphism}
-Let $u = \sum_{j=0}^p u_j \wedge \wp{p-j}$ be the primitive
+Let $u = \sum_{j=0}^p u_j \wedge \omega\^{p-j}$ be the primitive
 decomposition of a real $(p,p)$--form $u$, where each $u_j$ is a
 primitive $(j,j)$--form. Then
 \begin{align}
   \label{18:1}
-  \Lp l u 
-  &= \sum_{j=0}^{p-l} \tbinom{n-j-p+l}{l} \lp{p-j-l} u_j , \\
+  \Lambda\^ l u 
+  &= \sum_{j=0}^{p-l} \tbinom{n-j-p+l}{l} L\^{p-j-l} u_j , \\
   \label{18:2}
-  \lp{n-2(p-l)} (\Lp l u)^2   
+  L\^{n-2(p-l)} (\Lambda\^ l u)^2   
   &= \sum_{j=0}^{p-l} 
   (-1)^j
   \tbinom{p-j}{l}
   \tbinom{n-j-p+l}{n-2(p-l)}
   \tbinom{n-j-p+l}{l}
-  \lvert \lp{p-j} u_j \rvert^2
-  \wedge \wp n
+  \lvert L\^{p-j} u_j \rvert^2
+  \wedge \omega\^ n
 \end{align}
-and the decomposition of $\Lp l u$ in \eqref{18:1} is primitive.
+and the decomposition of $\Lambda\^ l u$ in \eqref{18:1} is primitive.
 \end{prop}
 
 \begin{proof}
   By linearity it is enough to prove \eqref{18:1} for a $(p,p)$--form
-$u = \lp{p-j} u_j$, where $u_j$ is primitive. Let $v$ be a form
+$u = L\^{p-j} u_j$, where $u_j$ is primitive. Let $v$ be a form
 of degree $(n-p+l,n-p+l)$. Then
   \begin{align*}
-    \la v, \Lp l (\lp{p-j} u_j ) \ra \wp n
-    &= \la \lp l v, \lp{p-j} u_j \ra \lp n \\
-    &= \lp l v \wedge (-1)^j \lp{n-j-p} u_j  \\
-    &= v \wedge (-1)^j \tbinom{n-j-p+l}{l} \lp{n-j-p+l} u_j  \\
-    &= v \wedge * \bigl( \tbinom{n-j-p+l}{l} \lp{p-j-l} u_j \bigr) \\
-    &= \la v, \tbinom{n-j-p+l}{l} \lp{p-j-l} u_j \ra \wp n.
+    \la v, \Lambda\^ l (L\^{p-j} u_j ) \ra \omega\^ n
+    &= \la L\^ l v, L\^{p-j} u_j \ra L\^ n \\
+    &= L\^ l v \wedge (-1)^j L\^{n-j-p} u_j  \\
+    &= v \wedge (-1)^j \tbinom{n-j-p+l}{l} L\^{n-j-p+l} u_j  \\
+    &= v \wedge * \bigl( \tbinom{n-j-p+l}{l} L\^{p-j-l} u_j \bigr) \\
+    &= \la v, \tbinom{n-j-p+l}{l} L\^{p-j-l} u_j \ra \omega\^ n.
   \end{align*}
 Since the equality holds for all $v$, \eqref{18:1} is proved for forms
-of type $\lp{p-j} u_j$, where $u_j$ is primitive. Note that the
-decomposition of $\Lp l (\lp{p-j} u_j)$ is again primitive, so
+of type $L\^{p-j} u_j$, where $u_j$ is primitive. Note that the
+decomposition of $\Lambda\^ l (L\^{p-j} u_j)$ is again primitive, so
 the same will hold for an arbitrary form $u$.
 
 For \eqref{18:2} we first 
 apply Proposition~\ref{16} to our $(p,p)$--form
-$u = \sum_j \lp{p-j} u_j = \sum_j (u_j/(p-j)!) \wedge \omega^{p-j}$.
+$u = \sum_j L\^{p-j} u_j = \sum_j (u_j/(p-j)!) \wedge \omega^{p-j}$.
 That gives
 \begin{align*}
-\lp{n-2p} u^2 
+L\^{n-2p} u^2 
 &= \sum_{j=0}^p \frac{1}{(n-2p)!}\Bigl( \frac{u_j^2}{(p-j)!^2} \Bigr) 
 \wedge \omega^{n-2j}\\
 &= \sum_{j=0}^p \frac{1}{(n-2p)!}\frac{(n-2j)!}{(p-j)!^2} 
-u_j^2 \wedge \wp{n-2j}\\
+u_j^2 \wedge \omega\^{n-2j}\\
 &= \sum_{j=0}^p \tbinom{n-p-j}{p-j} \tbinom{n-2j}{p-j}
-u_j^2 \wedge \wp{n-2j}
+u_j^2 \wedge \omega\^{n-2j}
 = \sum_{j=0}^p (-1)^j \tbinom{n-p-j}{p-j} \tbinom{n-2j}{p-j}
-\lvert u_j \rvert^2 \wp{n}.
+\lvert u_j \rvert^2 \omega\^{n}.
 \end{align*}
-To get the general result, we apply this to the $(p-l,p-l)$--form $\Lp l
+To get the general result, we apply this to the $(p-l,p-l)$--form $\Lambda\^ l
 u$. That gives (by letting $p \mapsto p - l$)
 \begin{align*}
-  \lp{n-2(p-l)} (\Lp l u)^2   
+  L\^{n-2(p-l)} (\Lambda\^ l u)^2   
   &= \sum_{j=0}^{p-l} 
   (-1)^j
   \tbinom{n-2j}{p-l-j}
   \tbinom{n-j-p+l}{p-l-j}
   \tbinom{n-j-p+l}{l}^2
   \lvert u_j \rvert^2
-  \wedge \wp n
+  \wedge \omega\^ n
   \\
   &= \sum_{j=0}^{p-l} 
   (-1)^j
@@ -304,8 +293,8 @@ u$. That gives (by letting $p \mapsto p - l$)
   \tbinom{n-j-p+l}{p-l-j}
   \tbinom{n-j-p+l}{l}^2
   }{\tbinom{n-2j}{p-j}}
-  \lvert \lp{p-j} u_j \rvert^2
-  \wedge \wp n.
+  \lvert L\^{p-j} u_j \rvert^2
+  \wedge \omega\^ n.
 \end{align*}
 Once we remark that
 $$
@@ -322,15 +311,15 @@ This last result is the key to proving what we want. It tells us how to
 write the square of the norm of a $(p,p)$--form $u$ as a linear
 combination of traces of the form: Define two vector spaces 
 \begin{align*}
-X &= \operatorname{Span}(\lp{n-2(p-l)} (\Lp l u)^2 \mid l = 0,\ldots,p),
+X &= \operatorname{Span}(L\^{n-2(p-l)} (\Lambda\^ l u)^2 \mid l = 0,\ldots,p),
 \\
-Y &= \operatorname{Span}(|\lp{p-j}u_j|^2 \wp{n} \mid j=0,\ldots,p).
+Y &= \operatorname{Span}(|L\^{p-j}u_j|^2 \omega\^{n} \mid j=0,\ldots,p).
 \end{align*}
 (Consider these as formal symbols if the possibility and implications of
 one of them being zero for a given form worries you.) Equation~\eqref{18:2}
 defines a linear morphism $A : X \to Y$; a morphism that only depends
 on the dimension of $V$ and the degree $p$, but is otherwise independent of
-the form $u$. Since $|u|^2\omega\^n = \sum |\lp{p-j}u_j| \omega\^n$,  
+the form $u$. Since $|u|^2\omega\^n = \sum |L\^{p-j}u_j| \omega\^n$,  
 the coefficients of the linear combination we seek are the coordinates of
 the vector $A^{-1}(1,\ldots,1)$. This observation shows that coefficients like the ones we seek exist, the task is now to show that they coincide with our integer sequence.
 
@@ -371,8 +360,8 @@ We can also write this as
   \tbinom{p-j}{l}
   \tbinom{n-j-p+l}{n-2(p-l)}
   \tbinom{n-j-p+l}{l}
-  \lvert \lp{p-j} u_j \rvert^2
-  \wedge \wp n.
+  \lvert L\^{p-j} u_j \rvert^2
+  \wedge \omega\^ n.
 \end{align*}
 By comparing the coefficients of $\lvert L\^p u_0 \rvert^2$ in these
 two expressions we find that
@@ -412,7 +401,7 @@ Polarizing now gives the general inner product on $(p,p)$--forms:
 \begin{coro}
 If $u$ and $v$ are complex $(p,p)$--forms on $V$, then
 $$
-\langle u, v \rangle \, \omega\^n
+\la u, v \ra \, \omega\^n
 = \sum_{l=0}^{p} 
 (-1)^{p+l} b_l \, 
 (\Lambda\^l u) \wedge (\Lambda\^l \overline v) \wedge \omega\^{n-2(p-l)}.
@@ -431,10 +420,10 @@ knowledge.
 (i)\quad
 For a $(2,2)$--form $u$ on $V$ we have
 $$
-|u|^2 \wp{n}
-= u^2 \wedge \wp{n-4}
-- (\Lambda u)^2 \wedge \wp{n-2}
-+ 3 (\Lp{2} u)^2 \wedge \wp{n}.
+|u|^2 \omega\^{n}
+= u^2 \wedge \omega\^{n-4}
+- (\Lambda u)^2 \wedge \omega\^{n-2}
++ 3 (\Lambda\^{2} u)^2 \wedge \omega\^{n}.
 $$
     
 \smallskip
@@ -442,12 +431,12 @@ $$
 (ii)\quad
 For a $(3,3)$--form $u$ our formula gives
 $$
-|u|^2 \wp{n}
+|u|^2 \omega\^{n}
 = 
-- u^2 \wedge \wp{n-6}
-+ (\Lambda u)^2 \wedge \wp{n-4}
-- 3 (\Lp{2} u)^2 \wedge \wp{n-2}
-+ 19 (\Lp{3} u)^2 \wedge \wp{n}.
+- u^2 \wedge \omega\^{n-6}
++ (\Lambda u)^2 \wedge \omega\^{n-4}
+- 3 (\Lambda\^{2} u)^2 \wedge \omega\^{n-2}
++ 19 (\Lambda\^{3} u)^2 \wedge \omega\^{n}.
 $$
 
 \smallskip
@@ -456,14 +445,14 @@ $$
 For a $(4,4)$--form $u$ we get
 $$
 \displaylines{
-|u|^2 \wp{n}
+|u|^2 \omega\^{n}
 = 
- u^2 \wedge \wp{n-8}
-- (\Lambda u)^2 \wedge \wp{n-6}
-+ 3 (\Lp{2} u)^2 \wedge \wp{n-4}
+ u^2 \wedge \omega\^{n-8}
+- (\Lambda u)^2 \wedge \omega\^{n-6}
++ 3 (\Lambda\^{2} u)^2 \wedge \omega\^{n-4}
 \hfill\cr\hfill
-{}- 19 (\Lp{3} u)^2 \wedge \wp{n-2}
-+ 211 (\Lp{4} u)^2 \wedge \wp{n}.
+{}- 19 (\Lambda\^{3} u)^2 \wedge \omega\^{n-2}
++ 211 (\Lambda\^{4} u)^2 \wedge \omega\^{n}.
 }
 $$
 \end{exam}
@@ -499,13 +488,13 @@ this should follow from general things in Coffman's~\cite{Coffman}.
 
 We also note that Newton's binomial formula gives
 $$
-\ap{l} = \sum_{k=0}^{l} \wp{k} \wedge \hp{l-k}
+\alpha\^{l} = \sum_{k=0}^{l} \omega\^{k} \wedge h\^{l-k}
 $$
 and that many of those terms will be zero for $l$ big for degree
-reasons. A similar formula expresses $\Lp{l}_\alpha$ in terms of
-$\Lp{k}_\omega$ and $\Lp{l-k}_h$.
+reasons. A similar formula expresses $\Lambda\^{l}_\alpha$ in terms of
+$\Lambda\^{k}_\omega$ and $\Lambda\^{l-k}_h$.
 
-Finally we set $k! c_k := \Lp{k}_h (\bigwedge^k \! R)$ for $k = 0, \ldots,
+Finally we set $k! c_k := \Lambda\^{k}_h (\bigwedge^k \! R)$ for $k = 0, \ldots,
 r$.  The notation is so chosen because when $R$ is the curvature tensor of
 an actual Hermitian metric on a vector bundle, the $c_k$ will be the Chern
 forms defined by $R$. The $k!$ factor deserves an explanation:
@@ -544,19 +533,19 @@ curvature tensor.
 \begin{theo}
     Let $E \to X$ be a holomorphic vector bundle of rank $r$ over a complex
 manifold $X$ of dimension $n$. Let $\omega$ and $h$ be Hermitian metrics on
-$X$ and $E$, respectively. Let $\skrun$ be the curvature form of $(E,h)$
+$X$ and $E$, respectively. Let $\curv$ be the curvature form of $(E,h)$
 and let $c_k$ be the Chern forms defined by the curvature form. Then
 $$
-\Bigl\lvert \skrun \Bigr\rvert^2 \omega\^n
+\Bigl\lvert \curv \Bigr\rvert^2 \omega\^n
 = (2 c_2 - c_1^2) \wedge \omega\^{n-2}
-+ \Bigl\lvert \tr_\omega \skrun \Bigr\rvert^2 \omega\^n
++ \Bigl\lvert \tr_\omega \curv \Bigr\rvert^2 \omega\^n
 $$
 at every point of $X$. If $(E,h)$ is Hermite--Einstein, then we also have
 $$
 0 \leq 
 (2r c_2 - (r-1) c_1^2) \wedge \omega\^{n-2}
 $$
-pointwise on $X$ with equality if and only if $\skrun = (\lambda/n) \id_E
+pointwise on $X$ with equality if and only if $\curv = (\lambda/n) \id_E
 \otimes\, \omega$, where $\lambda$ is the Hermite--Einstein constant of
 $(E,h)$.
 \end{theo}
@@ -565,10 +554,10 @@ $(E,h)$.
 \begin{proof}
    The announced result is local on $X$, so we pick a point $x \in X$ and
 write $V = T_{X,x}$, abuse notation to write $E = E_{x}$ and write $R$
-for the image of $\skrun$ under the isometry $\bigwedge^{1,1} \! T_X
+for the image of $\curv$ under the isometry $\bigwedge^{1,1} \! T_X
 \otimes \End E \to \bigwedge^{2,2} (T_X \otimes E)^*$ defined by $h$. Then
 $R$ is a $(2,2)$--form on $V \oplus E$.\footnote{Morally speaking, this
-amounts to viewing $\skrun$ as a form defined on the total space of the
+amounts to viewing $\curv$ as a form defined on the total space of the
 vector bundle $E$ and equipping that space with a metric induced by the
 ones on $X$ and $E$. Since the vector bundle is holomorphically locally
 trivial, its tangent bundle splits holomorphically into pullbacks of $E$
@@ -578,113 +567,113 @@ $V \oplus E$, in slight abuse of notation.
 
 The norm of $R$ as a $(2,2)$--form on $V \oplus E$ is
 $$
-|R|^2 \ap{n+r}
-= R^2 \wedge \ap{n+r-4}
-- (\Lambda_\alpha R)^2 \wedge \ap{n+r-2}
-+ 3 (\Lp{2}_\alpha R)^2 \wedge \ap{n+r}.
+|R|^2 \alpha\^{n+r}
+= R^2 \wedge \alpha\^{n+r-4}
+- (\Lambda_\alpha R)^2 \wedge \alpha\^{n+r-2}
++ 3 (\Lambda\^{2}_\alpha R)^2 \wedge \alpha\^{n+r}.
 $$
 We have
 \begin{align*}
-R^2 \wedge \ap{n+r-4}
-&= R^2 \wedge \biggl(\sum_{k=0}^4\wp{n-k} \wedge \hp{r+k-4}\biggr)
+R^2 \wedge \alpha\^{n+r-4}
+&= R^2 \wedge \biggl(\sum_{k=0}^4\omega\^{n-k} \wedge h\^{r+k-4}\biggr)
 \\
-&= R^2 \wedge \wp{n-2} \wedge \hp{r-2}
-= 2 c_2 \wedge \wp{n-2} \wedge \hp{r},
+&= R^2 \wedge \omega\^{n-2} \wedge h\^{r-2}
+= 2 c_2 \wedge \omega\^{n-2} \wedge h\^{r},
 \end{align*}
 where the second equality holds for degree reasons. Similarly we get
 \begin{align*}
-(\Lambda_\alpha R)^2 \wedge \ap{n+r-2}
-&= (\Lambda_\omega R + \Lambda_h R)^2 \wedge \ap{n+r-2}
+(\Lambda_\alpha R)^2 \wedge \alpha\^{n+r-2}
+&= (\Lambda_\omega R + \Lambda_h R)^2 \wedge \alpha\^{n+r-2}
 \\
 &= \bigl( (\Lambda_\omega R)^2 + 2 \Lambda_\omega R \wedge \Lambda_h R 
 + (\Lambda_h R)^2 \bigr) 
-\wedge \ap{n+r-2}
+\wedge \alpha\^{n+r-2}
 \\
-&= (\Lambda_\omega R)^2 \wedge \wp{n} \wedge \hp{r-2} 
-\\
-&\qquad
-+ 2 \Lambda_\omega R \wedge \Lambda_h R \wedge \wp{n-1} \wedge \hp{r-1}
-+ c_1^2 \wedge \wp{n-2} \wedge \hp{r} 
-\\
-&= (\Lambda_\omega R)^2 \wedge \wp{n} \wedge \hp{r-2} 
+&= (\Lambda_\omega R)^2 \wedge \omega\^{n} \wedge h\^{r-2} 
 \\
 &\qquad
-+ 2 (\tr_\omega c_1)^2 \wp{n} \wedge \hp{r}
-+ c_1^2 \wedge \wp{n-2} \wedge \hp{r} 
++ 2 \Lambda_\omega R \wedge \Lambda_h R \wedge \omega\^{n-1} \wedge h\^{r-1}
++ c_1^2 \wedge \omega\^{n-2} \wedge h\^{r} 
+\\
+&= (\Lambda_\omega R)^2 \wedge \omega\^{n} \wedge h\^{r-2} 
+\\
+&\qquad
++ 2 (\tr_\omega c_1)^2 \omega\^{n} \wedge h\^{r}
++ c_1^2 \wedge \omega\^{n-2} \wedge h\^{r} 
 \end{align*}
 because 
 \begin{align*}
-\Lambda_\omega R \wedge \Lambda_h R \wedge \wp{n-1} \wedge \hp{r-1}
+\Lambda_\omega R \wedge \Lambda_h R \wedge \omega\^{n-1} \wedge h\^{r-1}
 &= \Lambda_h \Lambda_\omega R \cdot \Lambda_\omega \Lambda_h R \;
-\wp{n} \wedge \hp{r}
+\omega\^{n} \wedge h\^{r}
 \\
-&= (\tr_\omega c_1)^2 \wp{n} \wedge \hp{r}.
+&= (\tr_\omega c_1)^2 \omega\^{n} \wedge h\^{r}.
 \end{align*}
 Finally, 
 $$
-(\Lp{2}_\alpha R)^2 \wedge \ap{n+r} 
-= (\Lambda_\omega \Lambda_h R)^2 \wedge \wp{n} \wedge \hp{r}
-= (\tr_\omega c_1)^2 \wedge \wp{n} \wedge \hp{r},
+(\Lambda\^{2}_\alpha R)^2 \wedge \alpha\^{n+r} 
+= (\Lambda_\omega \Lambda_h R)^2 \wedge \omega\^{n} \wedge h\^{r}
+= (\tr_\omega c_1)^2 \wedge \omega\^{n} \wedge h\^{r},
 $$
 again for degree reasons and commutativity of the adjoints of the Lefschetz
 operators. From this we reap
 \begin{align*}
-    \lvert R \rvert^2 \wp{n} \wedge \hp{r}
-    &= 2 c_2 \wedge \wp{n-2} \wedge \hp{r}
-    - (\Lambda_\omega R)^2 \wedge \wp{n} \wedge \hp{r-2} 
+    \lvert R \rvert^2 \omega\^{n} \wedge h\^{r}
+    &= 2 c_2 \wedge \omega\^{n-2} \wedge h\^{r}
+    - (\Lambda_\omega R)^2 \wedge \omega\^{n} \wedge h\^{r-2} 
     \\
     &\qquad\qquad
-    {}- 2 (\tr_\omega c_1)^2 \wp{n} \wedge \hp{r}
-    - c_1^2 \wedge \wp{n-2} \wedge \hp{r} 
+    {}- 2 (\tr_\omega c_1)^2 \omega\^{n} \wedge h\^{r}
+    - c_1^2 \wedge \omega\^{n-2} \wedge h\^{r} 
     \\
     &\qquad\qquad
-    {}+ 3 (\tr_\omega c_1)^2 \wedge \wp{n} \wedge \hp{r}
+    {}+ 3 (\tr_\omega c_1)^2 \wedge \omega\^{n} \wedge h\^{r}
     \\
-    &= (2 c_2 - c_1^2) \wedge \wp{n-2} \wedge \hp{r} 
+    &= (2 c_2 - c_1^2) \wedge \omega\^{n-2} \wedge h\^{r} 
     \\
     &\qquad\qquad
-    + (\tr_\omega c_1)^2 \wedge \wp{n} \wedge \hp{r}
-    - (\Lambda_\omega R)^2 \wedge \wp{n} \wedge \hp{r-2}
+    + (\tr_\omega c_1)^2 \wedge \omega\^{n} \wedge h\^{r}
+    - (\Lambda_\omega R)^2 \wedge \omega\^{n} \wedge h\^{r-2}
 \end{align*}
 which yields
 $$
-    \lvert R \rvert^2 \wp{n}
-    = (2 c_2 - c_1^2) \wedge \wp{n-2}
-    + (\tr_\omega c_1)^2 \, \wp{n}
-    - \Lp{2}_h(\Lambda_\omega R)^2 \, \wp{n}.
+    \lvert R \rvert^2 \omega\^{n}
+    = (2 c_2 - c_1^2) \wedge \omega\^{n-2}
+    + (\tr_\omega c_1)^2 \, \omega\^{n}
+    - \Lambda\^{2}_h(\Lambda_\omega R)^2 \, \omega\^{n}.
 $$
 We now use the formula for the norm of a $(1,1)$--form and see that
 $$
 \lvert \Lambda_\omega R \rvert_h^2
-= (\Lambda_h\Lambda_\omega R)^2 - \Lp{2}_h(\Lambda_\omega R)^2
-= (\tr_\omega c_1)^2 - \Lp{2}_h(\Lambda_\omega R)^2,
+= (\Lambda_h\Lambda_\omega R)^2 - \Lambda\^{2}_h(\Lambda_\omega R)^2
+= (\tr_\omega c_1)^2 - \Lambda\^{2}_h(\Lambda_\omega R)^2,
 $$
 thus obtaining our first announced result (in equivalent notation):
 $$
-    \lvert R \rvert^2 \, \wp{n}
-    = (2 c_2 - c_1^2) \wedge \wp{n-2}
-    + \lvert \Lambda_\omega R \rvert_h^2 \, \wp{n}.
+    \lvert R \rvert^2 \, \omega\^{n}
+    = (2 c_2 - c_1^2) \wedge \omega\^{n-2}
+    + \lvert \Lambda_\omega R \rvert_h^2 \, \omega\^{n}.
 $$
 
 Now assume that $(E,h)$ is Hermite--Einstein. By definition, this means
-that $\tr_\omega \skrun = \lambda \id_{E}$. Under our isometries, this
+that $\tr_\omega \curv = \lambda \id_{E}$. Under our isometries, this
 translates into $\Lambda_\omega R = \lambda h$. The factor $\lambda$
 satisfies $r \lambda = \tr_\omega c_1$, so we get
 \begin{align*}
     0 \leq 
-    \lvert R \rvert^2 \, \wp{n}
-    &= (2 c_2 - c_1^2) \wedge \wp{n-2}
-    + r |\lambda|^2 \, \wp{n}.
+    \lvert R \rvert^2 \, \omega\^{n}
+    &= (2 c_2 - c_1^2) \wedge \omega\^{n-2}
+    + r |\lambda|^2 \, \omega\^{n}.
     \\
-    &= (2 c_2 - c_1^2) \wedge \wp{n-2}
-    + \tfrac 1r (\tr_\omega c_1)^2 \wp{n}.
+    &= (2 c_2 - c_1^2) \wedge \omega\^{n-2}
+    + \tfrac 1r (\tr_\omega c_1)^2 \omega\^{n}.
 \end{align*}
 Multiplying by $r$ and rearranging gives 
 $$
 0 \leq
-r \lvert R \rvert^2 \, \wp{n}
-= (2r c_2 - (r-1)c_1^2) \wedge \wp{n-2}
-+ \lvert c_1 \rvert^2 \wp{n}.
+r \lvert R \rvert^2 \, \omega\^{n}
+= (2r c_2 - (r-1)c_1^2) \wedge \omega\^{n-2}
++ \lvert c_1 \rvert^2 \omega\^{n}.
 $$
 Proposition~\ref{prop:CS} below, which is just the Cauchy--Schwarz
 inequality in disguise, says that
@@ -746,8 +735,8 @@ Let $\omega$ be the Fubini--Study metric on $\PP^n$.  Then $c_k = (-1)^k
 \binom{n+1}{k} \omega^k$ and $\Ric \omega = (n+1)\omega$. This gives
 \begin{align*}
     0 \leq
-    \Bigl\lvert \skrun_{\omega_{\mathrm{FS}}} \Bigr\rvert^2 \omega\^n
-    & = (2 c_2 - c_1^2) \wedge \wp{n-2} + n(n+1)^2 \wp{n}
+    \Bigl\lvert \curv_{\omega_{\mathrm{FS}}} \Bigr\rvert^2 \omega\^n
+    & = (2 c_2 - c_1^2) \wedge \omega\^{n-2} + n(n+1)^2 \omega\^{n}
     \\
     &= \Bigl(2 \tbinom{n+1}{2} - (n+1)^2\Bigr) \omega^2 \wedge \omega\^{n-2}
     + n \omega\^{n}
@@ -768,41 +757,41 @@ Let $\omega$ be the Fubini--Study metric on $\PP^n$.  Then $c_k = (-1)^k
 
 
 The naive way forward is to imagine that calculating $\lvert \bigwedge^k\!
-\skrun_E \rvert^2$ will give an inequality involving the $k$--th Chern
+\curv_E \rvert^2$ will give an inequality involving the $k$--th Chern
 class of $E$. This both works and not: The norm of the $k$--th exterior
 power of the curvature form does involve the $k$--th Chern class, but also
-many mixed traces $(\Lambda_\omega\^l \bigwedge^k\!\skrun)^2 \wedge
+many mixed traces $(\Lambda_\omega\^l \bigwedge^k\!\curv)^2 \wedge
 \omega\^{n-2(2k-l)}$ that have no clear cohomological or geometric meaning. 
 
-These are entirely comparable to the terms $\lvert \Lambda_\omega \skrun
+These are entirely comparable to the terms $\lvert \Lambda_\omega \curv
 \rvert^2$ and $(\tr_\omega c_1)^2$ that show up in the norm of a curvature
 tensor. The way out there was to assume that the vector bundle was
 Hermite--Einstein, which gave cohomological meaning to the term $\lvert
-\Lambda_\omega \skrun \rvert^2$. Another possibility would have been to
+\Lambda_\omega \curv \rvert^2$. Another possibility would have been to
 specialize to the case of a K\"{a}hler manifold and assume $(E,h) =
 (T_X,\omega)$. The additional symmetries of the curvature tensor of a
 K\"{a}hler metric, as compared to an arbitrary Hermitian metric, entail
-that $\Lambda_\omega \skrun = \Lambda_h \skrun = \Ric \omega$. Assuming
+that $\Lambda_\omega \curv = \Lambda_h \curv = \Ric \omega$. Assuming
 further that $(X,\omega)$ is K\"{a}hler--Einstein then gives cohomological
-meaning to all the terms involved in the norm of $\skrun$.
+meaning to all the terms involved in the norm of $\curv$.
 
 We can hope that the symmetries of the curvature tensor of a K\"{a}hler
-metric ensure that $\Lambda_\omega\^l \bigwedge^k\! \skrun = \Lambda_h\^l
-\bigwedge^k\! \skrun$ for all $l$ and $k$, like they ensure that all the
+metric ensure that $\Lambda_\omega\^l \bigwedge^k\! \curv = \Lambda_h\^l
+\bigwedge^k\! \curv$ for all $l$ and $k$, like they ensure that all the
 Ricci-forms of a K\"{a}hler metric agree. This would at least simplify
 the terms appearing in the expansion of the norm of an exterior power of
-$\skrun$. It is not at all clear whether assuming $(X,\omega)$ to be
+$\curv$. It is not at all clear whether assuming $(X,\omega)$ to be
 K\"{a}hler--Einstein then further simplifies those terms.
 
 It is also probable that if this method is capable of giving inequalities
 involving higher Chern classes, then considering only the terms $\lvert
-\bigwedge^k\!  \skrun_E \rvert^2$ is not enough to do so. If we're
+\bigwedge^k\!  \curv_E \rvert^2$ is not enough to do so. If we're
 interested in an inequality involving the $k$--th Chern class of $X$, then
 I think we would also need to consider scalar products 
 $$
-\Bigl\langle 
-\bw{p}\! \skrun_E, \bw{k-p}\! \skrun_E \wedge \alpha\^{p} 
-\Bigr\rangle,
+\Bigl\la 
+\bw{p}\! \curv_E, \bw{k-p}\! \curv_E \wedge \alpha\^{p} 
+\Bigr\ra,
 \quad p \leq = k.
 $$
 These would involve products $c_p c_{k-p}$ of lower Chern classes. I guess
@@ -810,7 +799,7 @@ this by analogy with the terms in the Chern character
 $$
 \displaylines{
 \operatorname{ch}(E)
-= \tr\Bigl(\exp\Bigl(\skrun\Bigr)\Bigr)
+= \tr\Bigl(\exp\Bigl(\curv\Bigr)\Bigr)
 = \operatorname{rank}(E)
 + c_1 + \tfrac{1}{2}(c_1^2 - c_2)
 + \tfrac{1}{6}(c_1^3 - 3c_1c_2 + 3c_3)
@@ -822,15 +811,15 @@ $$
 who I feel have a relationship to our calculations that I can't explain
 right now (there is something more than the obvious ``oh, they both
 involve exterior powers'' here\footnote{For a mad pipe dream, express the
-norm of $\exp(\skrun_E)$ in terms of $\operatorname{ch}(E)$. Beware that
+norm of $\exp(\curv_E)$ in terms of $\operatorname{ch}(E)$. Beware that
 the ring structure used to define $\operatorname{ch}(E)$ is not the one of
 the exterior algebra; for $\operatorname{ch}(E)$ we compose the endomorphism
-factors of $\skrun$ but do not take their exterior powers.}). If this is
+factors of $\curv$ but do not take their exterior powers.}). If this is
 the case then triple products like $c_1 c_2 c_3$ start appearing around $k
 = 6$, which would further complicate things.
 
 In the K\"{a}hler case, matters are also complicated by the need to
-calculate things like $L\^{n-2(2k-p)}(\Lambda\^p L\^{q} \bw{p-q}\skrun)^2$.
+calculate things like $L\^{n-2(2k-p)}(\Lambda\^p L\^{q} \bw{p-q}\curv)^2$.
 The only way I see to do that is to take powers of the commutation relation
 $$
 [L, \Lambda] = (p + q - n) \id
