@@ -215,8 +215,47 @@ u^2 \wedge \omega^{n-2p-2}
 + u_{p+1}^2 \wedge \omega^{n-2p-2}.
 $$
 The middle term is zero because $u_{p+1} \wedge \omega^{n-2p-1} = 0$
-and $v_2^p \wedge \omega^{n-2p}$ is of the announced form by induction.
+and $v_p^2 \wedge \omega^{n-2p}$ is of the announced form by induction.
 \end{proof}
+
+
+\begin{prop}
+  Let $u = \sum_{j=0}^p u_j \wedge \omega^{p-j}$ be the primitive
+decomposition of a $(p,q)$--form $u$, where $u_j$ is a primitive
+$(j,j+q-p)$--form. Then
+$$
+u \wedge \overline u \wedge \omega^{n-p-q}
+= \sum_{j=0}^p u_j \wedge \overline u_j \wedge \omega^{n-2j-q+p}.
+$$
+\end{prop}
+
+\begin{proof}
+  We induct on $p$, the result being clear for $p = 0$ or $q = 0$. 
+  We may thus assume that $q \geq 1$. If $u$ is
+  a $(p+1,q)$--form  we have $u = \omega \wedge v_p + u_{p+1}$, where
+  $v_p$ is a $(p,q-1)$--form whose primitive decomposition is evident. Then
+$$
+u \wedge \overline u = \omega^2 \wedge v_p \wedge \overline v_p 
++ \omega \wedge v_p \wedge \overline u_{p+1} 
++ \omega \wedge u_{p+1} \wedge \overline v_p 
++ u_{p+1} \wedge \overline u_{p+1},
+$$
+so
+$$
+\displaylines{
+u \wedge \overline u \wedge \omega^{n-p-q-2}
+= v_p \wedge \overline v_p \wedge \omega^{n-p-q}
++ v_p \wedge \overline u_{p+1} \wedge \omega^{n-p-q-1}
+\hfill\cr\hfill
+{}+ u_{p+1} \wedge \overline v_p \wedge \omega^{n-p-q-1}
++ u_{p+1} \wedge \overline u_{p+1} \wedge \omega^{n-p-q-2}.
+}
+$$
+The two middle terms are zero because $u_{p+1}$ is primitive, so $u_{p+1}
+\wedge \omega^{n-p-q-1} = 0$ and $v_p \wedge \overline v_p \wedge
+\omega^{n-p-q}$ is of the announced form by induction.
+\end{proof}
+
 
 
 
