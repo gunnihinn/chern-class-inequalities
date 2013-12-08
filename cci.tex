@@ -17,7 +17,8 @@
 \title{Higher Chern class inequalities}
 
 \def\^#1{^{[#1]}}
-\def\bw#1{\bigwedge{}^{\! #1}}
+\def\bw#1{\bigwedge{}^{\mkern-5mu #1}\mkern2mu}
+\def\I{\mathbf{I}}
 \def\la{\langle}
 \def\ra{\rangle}
 \DeclareMathOperator{\tr}{tr}
@@ -105,7 +106,9 @@ worked out for the norms of higher-degree forms.
 
 Let $V$ be a complex vector space of dimension $n$ and $\omega$ a Hermitian
 inner product on $V$. The Hodge star operator of $\omega$ is $*$,
-the Lefschetz operator is $L$ and its adjoint is $\Lambda$. 
+the Lefschetz operator is $L$ and its adjoint is $\Lambda$. We write
+$\I = \sum_{p,q} i^{p-q} \pi_{p,q}$, where $\pi_{p,q} : \bw{*} V^* \to
+\bw{p,q} V^*$ is the orthogonal projection.
 
 Recall that a $k$--form $u$ on $V$ is \emph{primitive} if $\Lambda u = 0$.
 This is equivalent to $L^{n-k-1}u = 0$. Any $k$--form $u$ on $V$ admits a
@@ -119,16 +122,17 @@ $$
 A\^j \wedge A\^k = \tbinom{j+k}{j} A\^{j+k}.
 $$
 We will use this convention for the element $\omega$ of the exterior
-algebra $\bigwedge^* V^*$ and the operators $L$ and $\Lambda$ on that
+algebra $\bw{*} V^*$ and the operators $L$ and $\Lambda$ on that
 algebra.
 
 
 
 Consider the sequence of integers defined recursively by $b_0 = 1$ and
-$$
-b_p = \sum_{l=0}^{p-1} (-1)^{p+l+1} \tbinom{p}{l} b_l
-$$
-for $l \geq 1$. This is sequence number A000275 in the \textsl{On-line
+\begin{equation}
+\label{bezel}
+b_p + \sum_{l=0}^{p-1} (-1)^{l+p} \tbinom{p}{l}^2 b_l
+\end{equation}
+for $p \geq 1$. This is sequence number A000275 in the \textsl{On-line
 encyclopedia of integer sequences}~\cite{OEIS}; see also \cite{Carlitz}
 and \cite{Riordan} for perhaps unrelated information about the sequence.
 Its first few values are: 
@@ -142,13 +146,13 @@ Our objective in this section is to prove the following theorem.
 \begin{theo}
     \label{thm:norm}
 Let $u$ be a $(p,q)$--form on an $n$--dimensional complex vector
-space $V$. Then
+space $V$. Set $k = p+q$. Then
 %% So the formula be valid for u with p > q we need to sum further up.
 %% Figure out to what.
 $$
     \lvert u \rvert^2 \omega\^n
-    = \sum_{l=0}^p i^{(p-q)^2}(-1)^{q+l} b_l \, 
-    (\Lambda\^ l u \wedge \Lambda\^ l \overline u)
+    = \sum_{l=0}^p (-1)^{l+k(k+1)/2} b_l \, 
+    (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
     \wedge \omega\^{n-p-q+2l},
 $$
 \end{theo}
@@ -160,7 +164,7 @@ rests on the following formula.
 \begin{prop}[{{\cite[Proposition~1.67]{Huy}}}]
 Let $u$ be a primitive $(p,q)$--form on $V$. Set $k = p+q$. Then
 $$
-    * L\^{j} u = (-1)^{k(k+1)/2} L\^{n-j-k} i^{p-q} u.
+    * L\^{j} u = (-1)^{k(k+1)/2} L\^{n-j-k} \I u.
 $$
 \end{prop}
 
@@ -169,10 +173,10 @@ $$
 If $u$ is a primitive $(p,q)$--form, then
 \begin{align*}
 \lvert L\^{j} u \rvert^2 \omega\^{n}
-= L\^{j} u \wedge * L\^{j} \overline{u}
-&= L\^{j} u \wedge (-1)^{k(k+1)/2} L\^{n-j-k} i^{q-p} \overline{u} \\
-&= u \wedge \tbinom{n-k}{j} (-1)^{k(k+1)/2} L\^{n-k} i^{q-p} \overline{u} \\
-&= \tbinom{n-k}{j} u \wedge * \overline{u}
+= L\^{j} u \wedge * L\^{j} \overline{\I u}
+&= L\^{j} u \wedge (-1)^{k(k+1)/2} L\^{n-j-k} \overline{\I u} \\
+&= u \wedge \tbinom{n-k}{j} (-1)^{k(k+1)/2} L\^{n-k} \overline{\I u} \\
+&= \tbinom{n-k}{j} u \wedge * \overline{\I u}
 = \tbinom{n-k}{j} \lvert u \rvert^2 \omega\^{n},
 \end{align*}
 whose moral is that $\lvert L\^{j} u \rvert^2 = \tbinom{n-k}{j} \lvert u
@@ -197,8 +201,8 @@ $$
 decomposition of a $(p,q)$--form $u$, where $p \leq q$ and $u_j$ is a
 primitive $(j,j+q-p)$--form. Then
 $$
-u^2 \wedge \omega^{n-p-q}
-= \sum_{j=0}^p u_j^2 \wedge \omega^{n-2j-q+p}.
+u \wedge \overline{\I u} \wedge \omega^{n-p-q}
+= \sum_{j=0}^p u_j \wedge \overline{\I u_j} \wedge \omega^{n-2j-q+p}.
 $$
 \end{prop}
 
@@ -208,24 +212,24 @@ $u$ is a $(p+1,q+1)$--form we have $u = \omega \wedge v_p + u_{p+1}$,
 where $v_p$ is a $(p,q)$--form whose primitive decomposition is
 evident. Then
 $$
-u \wedge \overline u = \omega^2 \wedge v_p \wedge \overline v_p 
-+ \omega \wedge v_p \wedge \overline u_{p+1} 
-+ \omega \wedge u_{p+1} \wedge \overline v_p 
-+ u_{p+1} \wedge \overline u_{p+1},
+u \wedge \overline{\I u} = \omega^2 \wedge v_p \wedge \overline{\I v_p}
++ \omega \wedge v_p \wedge \overline{\I u_{p+1}}
++ \omega \wedge u_{p+1} \wedge \overline{\I v_p}
++ u_{p+1} \wedge \overline{\I u_{p+1}},
 $$
 so
 $$
 \displaylines{
-u \wedge \overline u \wedge \omega^{n-p-q-2}
-= v_p \wedge \overline v_p \wedge \omega^{n-p-q}
-+ v_p \wedge \overline u_{p+1} \wedge \omega^{n-p-q-1}
+u \wedge \overline{\I u} \wedge \omega^{n-p-q-2}
+= v_p \wedge \overline{\I v_p} \wedge \omega^{n-p-q}
++ v_p \wedge \overline{\I u_{p+1}} \wedge \omega^{n-p-q-1}
 \hfill\cr\hfill
-{}+ u_{p+1} \wedge \overline v_p \wedge \omega^{n-p-q-1}
-+ u_{p+1} \wedge \overline u_{p+1} \wedge \omega^{n-p-q-2}.
+{}+ u_{p+1} \wedge \overline{\I v_p} \wedge \omega^{n-p-q-1}
++ u_{p+1} \wedge \overline{\I u_{p+1}} \wedge \omega^{n-p-q-2}.
 }
 $$
 The two middle terms are zero because $u_{p+1}$ is primitive, so $u_{p+1}
-\wedge \omega^{n-p-q-1} = 0$ and $v_p \wedge \overline v_p \wedge
+\wedge \omega^{n-p-q-1} = 0$ and $v_p \wedge \overline{\I v_p} \wedge
 \omega^{n-p-q}$ is of the announced form by induction.
 \end{proof}
 
@@ -248,17 +252,17 @@ decomposition of a $(p,q)$--form $u$, where $p \leq q$ and each $u_j$ is a
 primitive $(j,j+q-p)$--form. Then
 \begin{gather}
   \label{18:1}
-  \Lambda\^ l u 
+  \Lambda\^l u 
   = \sum_{j=0}^{p-l} \tbinom{n-j-q+l}{l} L\^{p-j-l} u_j , 
   \\
-  L\^{n-p-q+2l}( \Lambda\^ l u \wedge \Lambda\^ l \overline u)
+  L\^{n-p-q+2l}( \Lambda\^l u \wedge \Lambda\^l \overline{\I u})
   \kern 193pt
   \\
   \label{18:2}
   \kern 70pt
   = \sum_{j=0}^{p-l} 
-  i^{(q-p)^2}
   (-1)^j
+  (-1)^{(q-p)(q-p+1)/2}
   \tbinom{p-j}{l}
   \tbinom{n-j-q+l}{p-l-j}
   \tbinom{n-j-q+l}{l}
@@ -266,7 +270,7 @@ primitive $(j,j+q-p)$--form. Then
   \wedge \omega\^ n
   \notag
 \end{gather}
-and the decomposition of $\Lambda\^ l u$ in \eqref{18:1} is primitive.
+and the decomposition of $\Lambda\^l u$ in \eqref{18:1} is primitive.
 \end{prop}
 
 \begin{proof}
@@ -274,9 +278,9 @@ and the decomposition of $\Lambda\^ l u$ in \eqref{18:1} is primitive.
 $u = L\^{p-j} u_j$, where $u_j$ is a primitive $(j,j+q-p)$--form. Let
 $v$ be a form of degree $(n-p+l,n-q+l)$ and set $k = 2j+q-p$. Then
   \begin{align*}
-    \la v, \Lambda\^ l (L\^{p-j} u_j ) \ra \omega\^ n
-    &= \la L\^ l v, L\^{p-j} u_j \ra L\^ n \\
-    &= L\^ l v \wedge i^{q-p}(-1)^{\binom{k+1}{2}} L\^{n-j-q} \overline u_j  \\
+    \la v, \Lambda\^l (L\^{p-j} u_j ) \ra \omega\^ n
+    &= \la L\^l v, L\^{p-j} u_j \ra L\^ n \\
+    &= L\^l v \wedge i^{q-p}(-1)^{\binom{k+1}{2}} L\^{n-j-q} \overline u_j  \\
     &= v \wedge i^{q-p}(-1)^{\binom{k+1}{2}}
     \tbinom{n-j-q+l}{l} L\^{n-j-q+l} \overline u_j  \\
     &= v \wedge * \bigl( \tbinom{n-j-q+l}{l} L\^{p-j-l} \overline u_j \bigr) \\
@@ -284,7 +288,7 @@ $v$ be a form of degree $(n-p+l,n-q+l)$ and set $k = 2j+q-p$. Then
   \end{align*}
 Since the equality holds for all $v$, \eqref{18:1} is proved for forms
 of type $L\^{p-j} u_j$, where $u_j$ is primitive. Note that the
-decomposition of $\Lambda\^ l (L\^{p-j} u_j)$ is again primitive, so
+decomposition of $\Lambda\^l (L\^{p-j} u_j)$ is again primitive, so
 the same will hold for an arbitrary form $u$.
 
 For \eqref{18:2} we first 
@@ -292,31 +296,33 @@ apply Proposition~\ref{16} to our $(p,q)$--form
 $u = \sum_j L\^{p-j} u_j = \sum_j (u_j/(p-j)!) \wedge \omega^{p-j}$.
 That gives
 \begin{align*}
-L\^{n-p-q} u \wedge \overline u
+L\^{n-p-q} (u \wedge \overline{\I u})
 &= \sum_{j=0}^p \frac{1}{(n-p-q)!}
-\Bigl( \frac{u_j\wedge \overline u_j}{(p-j)!^2} \Bigr) 
+\Bigl( \frac{u_j\wedge \overline{\I u_j}}{(p-j)!^2} \Bigr) 
 \wedge \omega^{n-2j-q+p}\\
 &= \sum_{j=0}^p \frac{1}{(n-p-q)!}\frac{(n-2j-q+p)!}{(p-j)!^2} 
-u_j \wedge \overline u_j \wedge \omega\^{n-2j-q+p}\\
+u_j \wedge \overline{\I u_j} \wedge \omega\^{n-2j-q+p}\\
 &= \sum_{j=0}^p \tbinom{n-j-q}{p-j} \tbinom{n-2j-q+p}{p-j}
-u_j \wedge \overline u_j \wedge \omega\^{n-2j-q+p}
+u_j \wedge \overline{\I u_j} \wedge \omega\^{n-2j-q+p}
 \\
-&= \sum_{j=0}^p i^{p-q}(-1)^{\binom{2j+q-p+1}{2}} 
+&= \sum_{j=0}^p 
+(-1)^{\binom{2j+q-p+1}{2}} 
 \tbinom{n-j-q}{p-j} \tbinom{n-2j-q+p}{p-j}
 \lvert u_j \rvert^2 \omega\^{n}
 \\
-&= \sum_{j=0}^p i^{(q-p)^2}(-1)^j
+&= \sum_{j=0}^p (-1)^j(-1)^{(q-p)(q-p+1)/2}
 \tbinom{n-j-q}{p-j} \tbinom{n-2j-q+p}{p-j}
 \lvert u_j \rvert^2 \omega\^{n}.
 \end{align*}
 To get the general result, we apply this to the $(p-l,q-l)$--form
-$\Lambda\^ l u$. That gives (by letting $p \mapsto p - l$, $q \mapsto q - l$)
+$\Lambda\^l u$. That gives (by letting $p \mapsto p - l$, $q \mapsto q
+- l$)
 \begin{align*}
-  &L\^{n-p-q+l)} (\Lambda\^ l u \wedge \Lambda\^l \overline u)   
+  &L\^{n-p-q+l} (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
   \\
   &\qquad\quad
   = \sum_{j=0}^{p-l} 
-  i^{(q-p)^2} (-1)^j
+  (-1)^{\binom{2j+q-p+1}{2}} 
   \tbinom{n-2j-q+p}{p-l-j}
   \tbinom{n-j-q+l}{p-l-j}
   \tbinom{n-j-q+l}{l}^2
@@ -325,7 +331,7 @@ $\Lambda\^ l u$. That gives (by letting $p \mapsto p - l$, $q \mapsto q - l$)
   \\
   &\qquad\quad
   = \sum_{j=0}^{p-l} 
-  i^{(q-p)^2} (-1)^j
+  (-1)^{\binom{2j+q-p+1}{2}} 
   \frac{
   \tbinom{n-2j-q+p}{p-l-j}
   \tbinom{n-j-q+l}{p-l-j}
@@ -348,7 +354,7 @@ write the square of the norm of a $(p,q)$--form $u$ with $p \leq q$ as
 a linear combination of traces of the form: Define two vector spaces
 \begin{align*}
 X &= \operatorname{Span}(L\^{n-p-q+2l)} 
-(\Lambda\^ l u \wedge \Lambda\^ l \overline u) \mid l = 0,\ldots,p),
+(\Lambda\^l u \wedge \Lambda\^l \overline{\I u}) \mid l = 0,\ldots,p),
 \\
 Y &= \operatorname{Span}(|L\^{p-j}u_j|^2 \omega\^{n} \mid j=0,\ldots,p).
 \end{align*}
@@ -362,22 +368,21 @@ the vector $A^{-1}(1,\ldots,1)$. This observation shows that coefficients like t
 
 
 \begin{proof}[Proof of Theorem~\ref{thm:norm}]
-    If $u$ is a $(p,q)$--form with $p \leq q$ then we write
-    $$
-    \lvert u \rvert^2 \omega\^n
-    = \sum_{l=0}^p i^{(p-q)^2}(-1)^{q+l} b_l(p,n) \, 
-    (\Lambda\^ l u \wedge \Lambda\^ l \overline u)
-    \wedge \omega\^{n-p-q+2l},
-    $$
+    If $u$ is a $(p,q)$--form with $p \leq q$ then we set $k = p+q$
+and write
+$$
+\lvert u \rvert^2 \omega\^n
+= \sum_{l=0}^p (-1)^{l + k(k+1)/2} b_l(p,n) \, 
+(\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
+\wedge \omega\^{n-p-q+2l},
+$$
 where $b_l(p,n)$ is the coefficient whose existence is guaranteed by
 Proposition~\ref{prop:morphism}.  We will prove that $b_l(p,n) = b_l$ by
 induction on $p$. 
 
-We first remark that $b_0(p,n) = b_0 = 1$ for all $p, n$, because
+We first remark that $b_0(p,n) = b_0 = 1$ for all $p, q, n$, because
 the norm of a primitive $(p,q)$--form $u$ is $\lvert u \rvert^2 \omega\^n =
-i^{(p+q)^2}(-1)^q u \wedge \overline u \wedge \omega\^{n-2}$. Since
-$i^{(p+q)^2} = i^{(p-q)^2}$ this proves the base step.
-
+(-1)^{k(k+1)/2} u \wedge \overline{\I u} \wedge \omega\^{n-p-q}$.
 
 For the induction step, we assume that $b_l(p,n) = b_l$ for $l = 0, \ldots,
 p-1$ and want to prove that $b_{p}(p,n) = b_{p}$. For this, first
@@ -387,19 +392,33 @@ $$
 \lvert u \rvert^2 \omega\^n 
 = \sum_j \lvert L\^{p-j} u_j \rvert^2.
 $$ 
-We can also write this as
+Let's record for immediate use that if $p \leq q$ then
+$(-1)^{(q-p)(q-p+1)/2} = (-1)^p(-1)^{(p+q)(p+q+1)/2}$. Then we can also write
+the above as
 \begin{align*}
 \lvert u \rvert^2 \omega\^n 
-&= \sum_{l=0}^p i^{(p-q)^2}(-1)^{l+p} b_l(p,n) \, 
-(\Lambda\^ l u \wedge \Lambda\^ l \overline u)
+&= \sum_{l=0}^p (-1)^{k(k+1)/2+l} b_l(p,n) \, 
+(\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
 \wedge \omega\^{n-2(p-l)}
 \\
-&= \sum_{l=0}^p i^{(p-q)^2}(-1)^{l+p} b_l(p,n) \, 
+&= \sum_{l=0}^p (-1)^{k(k+1)/2+l} b_l(p,n) 
+\\
+&\qquad
+\times\sum_{j=0}^l 
+(-1)^{j}
+(-1)^{(q-p)(q-p+1)/2}
+  \tbinom{p-j}{l}
+  \tbinom{n-j-q+l}{n-p-q+2l}
+  \tbinom{n-j-q+l}{l}
+  \lvert L\^{p-j} u_j \rvert^2
+  \wedge \omega\^ n
+\\
+&= \sum_{l=0}^p (-1)^{l+p} b_l(p,n) \, 
 \sum_{j=0}^l 
 (-1)^j
   \tbinom{p-j}{l}
-  \tbinom{n-j-p+l}{n-2(p-l)}
-  \tbinom{n-j-p+l}{l}
+  \tbinom{n-j-q+l}{n-p-q+2l}
+  \tbinom{n-j-q+l}{l}
   \lvert L\^{p-j} u_j \rvert^2
   \wedge \omega\^ n.
 \end{align*}
@@ -407,20 +426,25 @@ By comparing the coefficients of $\lvert L\^p u_0 \rvert^2$ in these
 two expressions we find that
 \begin{align*}
 1 &= 
-\sum_{l=0}^p i^{(p-q)^2}(-1)^{l+p} b_l(p,n) \, 
+\sum_{l=0}^p (-1)^{l+p} b_l(p,n) 
+\, 
 \tbinom{p}{l}
-\tbinom{n-p+l}{n-2(p-l)}
-\tbinom{n-p+l}{l}
+\tbinom{n-q+l}{n-p-q+2l}
+\tbinom{n-q+l}{l}
 \\
-&= i^{(p-q)^2}\Bigl(\tbinom{n}{p} b_p(p,n)
-+ \sum_{l=0}^{p-1} (-1)^{l+p} b_l \, 
+&= 
+\tbinom{n}{p} b_p(p,n)
++ \sum_{l=0}^{p-1} 
+(-1)^{l+p}
+b_l \, 
 \tbinom{p}{l}
-\tbinom{n-p+l}{p-l}
-\tbinom{n-p+l}{l}\Bigr)
+\tbinom{n-q+l}{p-l}
+\tbinom{n-q+l}{l}
 \end{align*}
-for all $n$. The binomial coefficient $\binom{n}{k}$ is a polynomial of
-degree $k$ in $n$ whose leading term is $1/k!$. Comparing the top-degree
-coefficients of $n$ in the above equation we find that
+for all $n \geq p+q$. The binomial coefficient $\binom{n}{k}$ is a
+polynomial of degree $k$ in $n$ whose leading term is
+$1/k!$. Comparing the top-degree coefficients of $n$ in the above
+equation we find that
 $$
 0 =
 \frac{1}{p!} b_p(p,n)
@@ -430,9 +454,8 @@ $$
 $$
 Since this equation expresses $b_p(p,n)$ in terms of things that do not
 depend on $n$, we conclude that $b_p$ doesn't depend on $n$ either.
-Minimal algebraic manipulations now show this equation to be equivalent to
-the defining recurrance relation for the integers $b_l$, from which we
-conclude that $b_p(p,n) = b_p$.
+The defining recurrance relation \eqref{bezel} for the integers $b_l$,
+now shows that $b_p(p,n) = b_p$.
 
 Finally, we remark that by conjugating the form $u$, exchanging $p$ and
 $q$, and carefully calculating the resulting sign change, it is enough
@@ -447,8 +470,8 @@ If $u$ and $v$ are complex $(p,q)$--forms on $V$, then
 $$
 \la u, v \ra \, \omega\^n
 = \sum_{l=0}^{p} 
-i^{(p-q)^2}(-1)^{q+l} b_l \, 
-(\Lambda\^l u) \wedge (\Lambda\^l \overline v) \wedge \omega\^{n-p-q+2l}.
+(-1)^{l+k(k+1)/2} b_l \, 
+(\Lambda\^l u) \wedge (\Lambda\^l \overline{\I v}) \wedge \omega\^{n-p-q+2l}.
 $$
 \end{coro}
 
