@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{amsart}
 
+
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -14,7 +15,8 @@
 
 \setstretch{1.1}
 
-\title{Higher Chern class inequalities}
+\author{Gunnar \TH\'or Magn\'usson}
+\title{Sketches of higher\\ Chern class inequalities}
 
 \def\^#1{^{[#1]}}
 \def\bw#1{\bigwedge{}^{\mkern-5mu #1}\mkern2mu}
@@ -119,7 +121,7 @@ $(k-2j)$--form.
 If $A$ is an element of an algebra then we define $A\^k = A^k / k!$ for $k
 \geq 0$. This entails that
 $$
-A\^j \wedge A\^k = \tbinom{j+k}{j} A\^{j+k}.
+A\^j \cdot A\^k = \tbinom{j+k}{j} A\^{j+k}.
 $$
 We will use this convention for the element $\omega$ of the exterior
 algebra $\bw{*} V^*$ and the operators $L$ and $\Lambda$ on that
@@ -147,11 +149,9 @@ Our objective in this section is to prove the following theorem.
     \label{thm:norm}
 Let $u$ be a $(p,q)$--form on an $n$--dimensional complex vector
 space $V$. Set $k = p+q$. Then
-%% So the formula be valid for u with p > q we need to sum further up.
-%% Figure out to what.
 $$
     \lvert u \rvert^2 \omega\^n
-    = \sum_{l=0}^p (-1)^{l+k(k+1)/2} b_l \, 
+    = \sum_{l=0}^n (-1)^{l+k(k+1)/2} b_l \, 
     (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
     \wedge \omega\^{n-p-q+2l},
 $$
@@ -259,7 +259,7 @@ primitive $(j,j+q-p)$--form. Then
   \kern 193pt
   \\
   \label{18:2}
-  \kern 70pt
+  \kern 25pt
   = \sum_{j=0}^{p-l} 
   (-1)^j
   (-1)^{(q-p)(q-p+1)/2}
@@ -372,7 +372,7 @@ the vector $A^{-1}(1,\ldots,1)$. This observation shows that coefficients like t
 and write
 $$
 \lvert u \rvert^2 \omega\^n
-= \sum_{l=0}^p (-1)^{l + k(k+1)/2} b_l(p,n) \, 
+= \sum_{l=0}^n (-1)^{l + k(k+1)/2} b_l(p,n) \, 
 (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
 \wedge \omega\^{n-p-q+2l},
 $$
@@ -397,11 +397,11 @@ $(-1)^{(q-p)(q-p+1)/2} = (-1)^p(-1)^{(p+q)(p+q+1)/2}$. Then we can also write
 the above as
 \begin{align*}
 \lvert u \rvert^2 \omega\^n 
-&= \sum_{l=0}^p (-1)^{k(k+1)/2+l} b_l(p,n) \, 
+&= \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) \, 
 (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
 \wedge \omega\^{n-2(p-l)}
 \\
-&= \sum_{l=0}^p (-1)^{k(k+1)/2+l} b_l(p,n) 
+&= \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) 
 \\
 &\qquad
 \times\sum_{j=0}^l 
@@ -413,7 +413,7 @@ the above as
   \lvert L\^{p-j} u_j \rvert^2
   \wedge \omega\^ n
 \\
-&= \sum_{l=0}^p (-1)^{l+p} b_l(p,n) \, 
+&= \sum_{l=0}^n (-1)^{l+p} b_l(p,n) \, 
 \sum_{j=0}^l 
 (-1)^j
   \tbinom{p-j}{l}
@@ -469,7 +469,7 @@ Polarizing now gives the general inner product on $(p,q)$--forms:
 If $u$ and $v$ are complex $(p,q)$--forms on $V$, then
 $$
 \la u, v \ra \, \omega\^n
-= \sum_{l=0}^{p} 
+= \sum_{l=0}^{n} 
 (-1)^{l+k(k+1)/2} b_l \, 
 (\Lambda\^l u) \wedge (\Lambda\^l \overline{\I v}) \wedge \omega\^{n-p-q+2l}.
 $$
@@ -568,17 +568,19 @@ forms defined by $R$. The $k!$ factor deserves an explanation:
 
 The inner product $h$ is an isomorphism $h : E \to \overline E^*$. It
 induces inner products on both $\End E$ and $\bigwedge^{1,1} \! E^*$ and a
-morphism $h : \End E \to \bigwedge^{1,1} \! E^*$. The trace of an
-endomorphism of $E$ is just its scalar product again the identity morphism.
-Taking $k$--th exterior powers we get a canonical morphism $h^k : \End
-\bigwedge^k \! E \to \bigwedge^{k,k} \! E^*$. This morphism is however not
-an isometry, but $h\^k$ is; this can be seen by comparing the norms of
-$\id_{\wedge^k E}$ and its image $h\^k$. We now want to find a morphism
+morphism $h  \otimes \id_{E^*}: \End E \to \bigwedge^{1,1} \!
+E^*$. The trace of an endomorphism of $E$ is just its scalar product
+again the identity morphism.  Taking $k$--th exterior powers we get a
+canonical morphism
+$h^k \otimes \id_{\wedge^k E^*} : \End \bigwedge^k \! E \to
+\bigwedge^{k,k} \! E^*$. This morphism is however not an isometry, but
+$h\^k$ is; this can be seen by comparing the norms of $\id_{\wedge^k
+E}$ and its image $h\^k$. We now want to find a morphism
 $\bigwedge^{1,1} \! E \to \bigwedge^{k,k} \! E$ that makes the diagram
 $$
 \xymatrix@C+10pt{
-    \End E \ar[r]^-{f \mapsto \wedge^k f} \ar[d]^{h} & 
-    \End \bigwedge^{k} \! E \ar[d]^{h\^k} \\
+    \End E \ar[r]^-{f \mapsto \wedge^k f} \ar[d]^{h \otimes \id_{E^*}} & 
+    \End \bigwedge^{k} \! E \ar[d]^{h\^k \otimes \id_{\wedge^k E^*}} \\
     \bigwedge^{1,1} \! E \ar@{-->}[r] 
     & \bigwedge^{k,k} \! E
 }
@@ -857,9 +859,9 @@ interested in an inequality involving the $k$--th Chern class of $X$, then
 I think we would also need to consider scalar products 
 $$
 \Bigl\la 
-\bw{p}\! \curv_E, \bw{k-p}\! \curv_E \wedge \alpha\^{p} 
+\bw{p}\! \curv_E \wedge \alpha\^{k-p}, \bw{k-p}\! \curv_E \wedge \alpha\^{p} 
 \Bigr\ra,
-\quad p \leq = k.
+\quad p \leq k.
 $$
 These would involve products $c_p c_{k-p}$ of lower Chern classes. I guess
 this by analogy with the terms in the Chern character
@@ -877,37 +879,49 @@ $$
 $$
 who I feel have a relationship to our calculations that I can't explain
 right now (there is something more than the obvious ``oh, they both
-involve exterior powers'' here\footnote{For a mad pipe dream, express the
-norm of $\exp(\curv_E)$ in terms of $\operatorname{ch}(E)$. Beware that
-the ring structure used to define $\operatorname{ch}(E)$ is not the one of
-the exterior algebra; for $\operatorname{ch}(E)$ we compose the endomorphism
-factors of $\curv$ but do not take their exterior powers.}). If this is
+involve exterior powers'' here). If this is
 the case then triple products like $c_1 c_2 c_3$ start appearing around $k
 = 6$, which would further complicate things.
 
 In the K\"{a}hler case, matters are also complicated by the need to
 calculate things like $L\^{n-2(2k-p)}(\Lambda\^p L\^{q} \bw{p-q}\curv)^2$.
-The only way I see to do that is to take powers of the commutation relation
-$$
-[L, \Lambda] = (p + q - n) \id
-\quad\text{on $(p,q)$--forms}
-$$
-and hope for the best.
+For this we should try to commute $\Lambda\^p$ and $L\^q$. This can be done; compare with a formula for $[L^p,\Lambda]$ in Huybrecht's~\cite[Chapter~1.2]{Huy}.
 
-I'll finish by writing the curvature tensor of a K\"{a}hler metric with
-constant bisectional curvature. For the moment I mean nothing serious by
-this, I'm just going on a flight tomorrow and want to have these somewhere
-to play with.
+\subsection*{Speculation}
 
-
-\begin{exam}
-If $\omega$ has constant bisectional curvature $\lambda$, then its
-curvature tensor is 
+Let 
 $$
-R_{jklm} = \lambda(\omega_{jk} \omega_{lm} - \omega_{jm} \omega_{lk}).
-$$ 
-Calculate $\bw{k}R$ and its various traces.
-\end{exam}
+f(z) = J_0(2\sqrt z) = \sum_{m\geq0} (-1)^m \frac{1}{m!^2} z^m.
+$$
+This is a Bessel function of the first kind and if we set $z = xy$ and look at its reciproque we find
+$$
+\frac{1}{f(xy)} = \sum_{l\geq 0} (-1)^l b_l x\^l y\^l.
+$$
+We can then write
+$$
+(-1)^{k(k+1)/2}
+\la u,v \ra \, \omega\^n
+= 
+\pi_{n,n}\Bigl[
+\frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
+\wedge \exp(\omega)
+\Bigr],
+$$
+where $\pi_{n,n} : \bw{*} V^* \to \bw{n,n} V^*$ is the orthogonal
+projection into the subspace of $(n,n)$--forms. This formula holds for
+arbitrary $(p,q)$--forms, but proving it for an arbitrary form of
+mixed bidegree should be easy.
+
+If we get rid of the projection morphism we have
+$$
+\alpha(u,v)
+= 
+\frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
+\wedge \exp(\omega),
+$$
+where $\alpha$ is some sesquilinear operator on the exterior
+algebra. It would be very interesting to know exactly what operator
+that is.
 
 
 
