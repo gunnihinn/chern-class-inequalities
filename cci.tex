@@ -15,8 +15,7 @@
 
 \setstretch{1.1}
 
-\author{Gunnar \TH\'or Magn\'usson}
-\title{Sketches of higher\\ Chern class inequalities}
+\title{Higher Chern class inequalities}
 
 \def\^#1{^{[#1]}}
 \def\bw#1{\bigwedge{}^{\mkern-5mu #1}\mkern2mu}
@@ -157,8 +156,9 @@ Our objective in this section is to prove the following theorem.
 Let $u$ be a $(p,q)$--form on an $n$--dimensional complex vector
 space $V$. Set $k = p+q$. Then
 $$
+    (-1)^{k(k+1)/2}
     \lvert u \rvert^2 \omega\^n
-    = \sum_{l=0}^n (-1)^{l+k(k+1)/2} b_l \, 
+    = \sum_{l=0}^n (-1)^{l} b_l \, 
     (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
     \wedge \omega\^{n-p-q+2l},
 $$
@@ -483,8 +483,9 @@ Polarizing now gives the general inner product on $(p,q)$--forms:
 If $u$ and $v$ are complex $(p,q)$--forms on $V$, then
 $$
 \la u, v \ra \, \omega\^n
+(-1)^{k(k+1)/2}
 = \sum_{l=0}^{n} 
-(-1)^{l+k(k+1)/2} b_l \, 
+(-1)^{l} b_l \, 
 (\Lambda\^l u) \wedge (\Lambda\^l \overline{\I v}) \wedge \omega\^{n-p-q+2l}.
 $$
 \end{coro}
@@ -905,7 +906,7 @@ Let $\omega$ be the Fubini--Study metric on $\PP^n$.  Then $c_k = (-1)^k
 
 
 
-\section{Sketches of attempts at higher Chern class inequalities}
+\section{Sketches of higher Chern class inequalities}
 
 
 The naive way forward is to imagine that calculating $\lvert \bigwedge^k\!
@@ -978,17 +979,29 @@ f(z) = J_0(2\sqrt z) = \sum_{m\geq0} (-1)^m \frac{1}{m!^2} z^m.
 $$
 This is a Bessel function of the first kind and if we set $z = xy$ and look at its reciproque we find
 $$
-\frac{1}{f(xy)} = \sum_{l\geq 0} (-1)^l b_l x\^l y\^l.
+\frac{1}{f(xy)} = \sum_{l\geq 0} (-1)^l b_l x\^l y\^l;
 $$
-We can then write
+see \cite{Carlitz,Riordan}.  We let these functions operate on the space
+of sesquilinear operators on the exterior algebra $\bw{*} V^*$, by
+declaring that $x\^a y\^b(\Lambda, \Lambda)(u,\overline v) := \Lambda\^a u
+\wedge \Lambda\^b \overline v$. We can then write
 $$
+\eqalign{
+(-1)^{k(k+1)/2} u \wedge \overline{\I v} \wedge \omega\^{n-p-q}
+    &= 
+    \pi_{n,n}\Bigl(
+    f(xy)(\Lambda,\Lambda)(u,\overline{\I v})
+    \wedge \exp(\omega)
+    \Bigr),
+    \cr
 (-1)^{k(k+1)/2}
 \la u,v \ra \, \omega\^n
-= 
-\pi_{n,n}\Bigl[
+&= 
+\pi_{n,n}\Bigl(
 \frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
 \wedge \exp(\omega)
-\Bigr],
+\Bigr),
+}
 $$
 where $\pi_{n,n} : \bw{*} V^* \to \bw{n,n} V^*$ is the orthogonal
 projection into the subspace of $(n,n)$--forms. This formula holds for
@@ -1005,9 +1018,10 @@ $$
 where $\alpha$ is some sesquilinear operator on the exterior algebra. 
 Exactly which operator is probably of no importance; if we think of our
 forms as living on a compact manifold then we're really interested in
-the integral of the inner product over the manifold, and there all forms
+the integral of the inner product over the manifold and there all forms
 of bidegree other than $(n,n)$ disappear. Compare with the product of
-the Chern character and Todd class in Grothendieck--Riemann--Roch theorem.
+the Chern character and Todd class in Hirzebruch--Riemann--Roch theorem,
+where no one cares what the classes of degree $< 2n$ are.
 
 
 \bibliographystyle{amsalpha}
