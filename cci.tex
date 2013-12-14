@@ -40,6 +40,13 @@
 \newtheorem{rema}[theo]{Remark}
 \numberwithin{equation}{section}
 
+\makeatletter
+\def\eqalign#1{%
+ \null\,\vcenter{\openup\jot\m@th
+  \ialign{\strut\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil
+      &&\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil\crcr#1\crcr}}\,}
+\makeatother
+
 \begin{document}
 
 
@@ -132,7 +139,7 @@ algebra.
 Consider the sequence of integers defined recursively by $b_0 = 1$ and
 \begin{equation}
 \label{bezel}
-b_p + \sum_{l=0}^{p-1} (-1)^{l+p} \tbinom{p}{l}^2 b_l
+\sum_{l=0}^{p} (-1)^{l} \tbinom{p}{l}^2 b_l = 0
 \end{equation}
 for $p \geq 1$. This is sequence number A000275 in the \textsl{On-line
 encyclopedia of integer sequences}~\cite{OEIS}; see also \cite{Carlitz}
@@ -317,20 +324,21 @@ u_j \wedge \overline{\I u_j} \wedge \omega\^{n-2j-q+p}
 To get the general result, we apply this to the $(p-l,q-l)$--form
 $\Lambda\^l u$. That gives (by letting $p \mapsto p - l$, $q \mapsto q
 - l$)
-\begin{align*}
-  &L\^{n-p-q+l} (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
-  \\
-  &\qquad\quad
-  = \sum_{j=0}^{p-l} 
+$$
+\displaylines{
+  L\^{n-p-q+l} (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
+  \hfill\cr\hfill
+  \jot=0pt
+  \eqalign{
+  &= \sum_{j=0}^{p-l} 
   (-1)^{\binom{2j+q-p+1}{2}} 
   \tbinom{n-2j-q+p}{p-l-j}
   \tbinom{n-j-q+l}{p-l-j}
   \tbinom{n-j-q+l}{l}^2
   \lvert u_j \rvert^2
   \wedge \omega\^ n
-  \\
-  &\qquad\quad
-  = \sum_{j=0}^{p-l} 
+  \cr
+  &= \sum_{j=0}^{p-l} 
   (-1)^{\binom{2j+q-p+1}{2}} 
   \frac{
   \tbinom{n-2j-q+p}{p-l-j}
@@ -339,7 +347,9 @@ $\Lambda\^l u$. That gives (by letting $p \mapsto p - l$, $q \mapsto q
   }{\tbinom{n-2j-q+p}{p-j}}
   \lvert L\^{p-j} u_j \rvert^2
   \wedge \omega\^ n.
-\end{align*}
+  }\!
+}
+$$
 Once we remark that
 $$
 \frac{\binom{n-2j-q+p}{p-j-l} \binom{n-j-q+l}{l}}{\binom{n-2j-q+p}{p-j}}
@@ -395,25 +405,27 @@ $$
 Let's record for immediate use that if $p \leq q$ then
 $(-1)^{(q-p)(q-p+1)/2} = (-1)^p(-1)^{(p+q)(p+q+1)/2}$. Then we can also write
 the above as
-\begin{align*}
+$$
+\displaylines{
 \lvert u \rvert^2 \omega\^n 
-&= \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) \, 
+= \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) \, 
 (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
 \wedge \omega\^{n-2(p-l)}
-\\
-&= \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) 
-\\
-&\qquad
-\times\sum_{j=0}^l 
+\hfill\cr
+\phantom{\lvert u \rvert^2 \omega\^n}
+{}= \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) 
+\sum_{j=0}^l 
 (-1)^{j}
 (-1)^{(q-p)(q-p+1)/2}
+\hfill\cr\hfill{}\times
   \tbinom{p-j}{l}
   \tbinom{n-j-q+l}{n-p-q+2l}
   \tbinom{n-j-q+l}{l}
   \lvert L\^{p-j} u_j \rvert^2
   \wedge \omega\^ n
-\\
-&= \sum_{l=0}^n (-1)^{l+p} b_l(p,n) \, 
+\cr
+\phantom{\lvert u \rvert^2 \omega\^n}
+{}= \sum_{l=0}^n (-1)^{l+p} b_l(p,n) \, 
 \sum_{j=0}^l 
 (-1)^j
   \tbinom{p-j}{l}
@@ -421,7 +433,9 @@ the above as
   \tbinom{n-j-q+l}{l}
   \lvert L\^{p-j} u_j \rvert^2
   \wedge \omega\^ n.
-\end{align*}
+  \hfill
+}
+$$
 By comparing the coefficients of $\lvert L\^p u_0 \rvert^2$ in these
 two expressions we find that
 \begin{align*}
@@ -523,6 +537,75 @@ $$
 }
 $$
 \end{exam}
+
+
+Our theorem allows us to express the scalar product of two forms as a
+wedge product of forms derived from the original ones. Doing things the
+other way around, or expressing a wedge product in terms of inner products
+is also possible:
+
+
+\begin{theo}
+    If $u$ and $v$ are $(p,q)$--forms on $V$, then
+    $$
+    (-1)^{k(k+1)/2} u \wedge \overline{\I v} \wedge \omega\^{n-p-q}
+    = \sum_{m = 0}^n (-1)^{m} 
+    \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra
+    \wedge \omega\^{n-p-q-2m}.
+    $$
+\end{theo}
+
+
+\begin{proof}
+We remark that as usual it is enough to prove our statement for
+$(p,q)$--forms with $p \leq q$, so we assume this holds. Plugging
+$\Lambda\^m u$ and $\Lambda\^m \I v$ into our formula gives
+$$
+\displaylines{
+(-1)^{k_m(k_m+1)/2} 
+\la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra
+\wedge \omega\^{n-p-q-2m}
+\hfill\cr\hfill
+{} = \sum_{l=0}^{n} 
+(-1)^l b_l \, 
+\tbinom{l+m}{l}^2
+(\Lambda\^{l+m} u) \wedge (\Lambda\^{l+m} \overline{\I v}) 
+\wedge \omega\^{n-p-q+2(l+m)},
+}
+$$
+where we write $k_m = p+q-2m$. Remark that 
+$$
+(-1)^{k_m(k_m+1)/2} =
+(-1)^{k(k+1)/2} (-1)^m.
+$$  
+If we sum both sides of the above equation for the scalar product over $m$
+from $0$ to $n$ and then change the variable in the first sum from $m$ to
+$\nu = l+m$ we get 
+$$
+\displaylines{
+    (-1)^{k(k+1)/2} 
+    \sum_{m=0}^n
+    (-1)^{m} \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra
+    \wedge \omega\^{n-p-q+2(l+m)}
+    \hfill\cr\noalign{\vskip-3pt}\hfill
+    \jot=0pt
+    \eqalign{
+    {} &= 
+    \sum_{\nu=0}^{n} 
+    \Bigl(
+    \sum_{l=0}^{\nu}
+    (-1)^l b_l \, 
+    \tbinom{\nu}{l}^2
+    \Bigr)
+    (\Lambda\^{\nu} u) \wedge (\Lambda\^{\nu} \overline{\I v}) 
+    \wedge \omega\^{n-p-q+2\nu)}
+    \cr\noalign{\vskip3pt}{}
+    &= u \wedge \overline{\I v} \wedge \omega\^{n-p-q},
+}
+}
+$$
+because $\sum_{l=0}^{\nu} (-1)^l b_l \, \tbinom{\nu}{l}^2 = 0$ for all $\nu \geq 1$ by definition.
+\end{proof}
 
 
 
@@ -870,7 +953,7 @@ $$
 \operatorname{ch}(E)
 = \tr\Bigl(\exp\Bigl(\curv\Bigr)\Bigr)
 = \operatorname{rank}(E)
-+ c_1 + \tfrac{1}{2}(c_1^2 - c_2)
++ c_1 + \tfrac{1}{2}(c_1^2 - 2c_2)
 + \tfrac{1}{6}(c_1^3 - 3c_1c_2 + 3c_3)
 \hfill\cr\hfill
 {}+ \tfrac{1}{24}(c_1^4 -4 c_2 c_1^2 + 4 c_3 c_1 + 2 c_2^2 - 4 c_4)
@@ -887,7 +970,7 @@ In the K\"{a}hler case, matters are also complicated by the need to
 calculate things like $L\^{n-2(2k-p)}(\Lambda\^p L\^{q} \bw{p-q}\curv)^2$.
 For this we should try to commute $\Lambda\^p$ and $L\^q$. This can be done; compare with a formula for $[L^p,\Lambda]$ in Huybrecht's~\cite[Chapter~1.2]{Huy}.
 
-\subsection*{Speculation}
+\subsection*{Bessel function}
 
 Let 
 $$
@@ -919,10 +1002,12 @@ $$
 \frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
 \wedge \exp(\omega),
 $$
-where $\alpha$ is some sesquilinear operator on the exterior
-algebra. It would be very interesting to know exactly what operator
-that is.
-
+where $\alpha$ is some sesquilinear operator on the exterior algebra. 
+Exactly which operator is probably of no importance; if we think of our
+forms as living on a compact manifold then we're really interested in
+the integral of the inner product over the manifold, and there all forms
+of bidegree other than $(n,n)$ disappear. Compare with the product of
+the Chern character and Todd class in Grothendieck--Riemann--Roch theorem.
 
 
 \bibliographystyle{amsalpha}
