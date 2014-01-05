@@ -108,7 +108,7 @@ worked out for the norms of higher-degree forms.
 
 
 
-\section{Inner products of $(p,q)$--forms}
+\section{Inner products of exterior forms}
 
 
 
@@ -153,19 +153,24 @@ Our objective in this section is to prove the following theorem.
 
 \begin{theo}
     \label{thm:norm}
-Let $u$ be a $(p,q)$--form on an $n$--dimensional complex vector
-space $V$. Set $k = p+q$. Then
+Let $u$ be a $k$--form on an $n$--dimensional complex vector
+space $V$. Then
 $$
     (-1)^{k(k+1)/2}
     \lvert u \rvert^2 \omega\^n
     = \sum_{l=0}^n (-1)^{l} b_l \, 
     (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
-    \wedge \omega\^{n-p-q+2l},
+    \wedge \omega\^{n-k+2l}.
 $$
 \end{theo}
 
-Proving this result demands a certain amount of preparation, all of which
-rests on the following formula.
+We will actually prove this result for a $(p,q)$--form $u$ with $p \leq q$
+and $p+q = k$. By conjugation the restriction $p \leq q$ is irrelevant and
+it is just a matter of basic combinatorics and degree reasoning to see
+that if the result holds for $(p,q)$--forms with $p + q = k$ then it also
+holds for a $k$--form, i.e., that the right-hand side respects the
+orthogonal decomposition of $\bw{k}V^*$.  Proving this result demands a
+certain amount of preparation, all of which rests on the following formula.
 
 
 \begin{prop}[{{\cite[Proposition~1.67]{Huy}}}]
@@ -374,7 +379,33 @@ defines a linear morphism $A : X \to Y$; a morphism that only depends
 on the dimension of $V$ and the degree $p$, but is otherwise independent of
 the form $u$. Since $|u|^2\omega\^n = \sum |L\^{p-j}u_j| \omega\^n$,  
 the coefficients of the linear combination we seek are the coordinates of
-the vector $A^{-1}(1,\ldots,1)$. This observation shows that coefficients like the ones we seek exist, the task is now to show that they coincide with our integer sequence.
+the vector $A^{-1}(1,\ldots,1)$. This observation shows that coefficients
+like the ones we seek exist, the task is now to show that they coincide
+with our integer sequence.
+
+
+Before we do so we remark for our amusement an expression for the adjoint
+of the Lefschetz operator that must be known but I had not seen before.
+
+\begin{coro}
+    \hfil
+    \qquad
+    $\Lambda = * L *$
+    \hfil
+    \phantom{\bf Corollary 1.7}
+\end{coro}
+
+\begin{proof}
+It is enough to prove the identity for $(p,q)$--forms $u = L\^{p-j} u_j$,
+where $u_j$ is a $(j,j+q-p)$--form and $p \leq q$. By setting $m = 2j+q-p$
+and applying Proposition~\ref{16} twice we get
+\begin{align*}
+    *L*u &= *L (-1)^{m(m+1)/2} L\^{n-j-q} u_j \\
+    &= * (-1)^{m(m+1)/2} \tbinom{n-j-q+1}{1} L\^{n-j-q+1} u_j \\
+    &= \tbinom{n-j-q+1}{1} L\^{p-j-1} u_j = \Lambda u,
+\end{align*}
+where the last equality holds by Proposition~\ref{prop:morphism}.
+\end{proof}
 
 
 \begin{proof}[Proof of Theorem~\ref{thm:norm}]
@@ -482,8 +513,8 @@ Polarizing now gives the general inner product on $(p,q)$--forms:
 \begin{coro}
 If $u$ and $v$ are complex $(p,q)$--forms on $V$, then
 $$
-\la u, v \ra \, \omega\^n
 (-1)^{k(k+1)/2}
+\la u, v \ra \, \omega\^n
 = \sum_{l=0}^{n} 
 (-1)^{l} b_l \, 
 (\Lambda\^l u) \wedge (\Lambda\^l \overline{\I v}) \wedge \omega\^{n-p-q+2l}.
@@ -546,7 +577,7 @@ other way around, or expressing a wedge product in terms of inner products
 is also possible:
 
 
-\begin{theo}
+\begin{coro}
     If $u$ and $v$ are $(p,q)$--forms on $V$, then
     $$
     (-1)^{k(k+1)/2} u \wedge \overline{\I v} \wedge \omega\^{n-p-q}
@@ -554,7 +585,7 @@ is also possible:
     \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra
     \wedge \omega\^{n-p-q-2m}.
     $$
-\end{theo}
+\end{coro}
 
 
 \begin{proof}
