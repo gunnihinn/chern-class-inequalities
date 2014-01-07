@@ -22,12 +22,17 @@
 \def\I{\mathbf{I}}
 \def\la{\langle}
 \def\ra{\rangle}
+\def\Im{\operatorname{Im}}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Ric}{Ric}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Hom}{Hom}
+\def\ZZ{\mathbb{Z}}
+\def\CC{\mathbb{C}}
 \def\PP{\mathbb{P}}
+\def\RR{\mathcal{R}}
+\def\OO{\mathcal{O}}
 \def\curv{\frac{i}{2\pi} \Theta}
 
 \newtheorem{theo}{Theorem}[section]
@@ -383,29 +388,6 @@ the vector $A^{-1}(1,\ldots,1)$. This observation shows that coefficients
 like the ones we seek exist, the task is now to show that they coincide
 with our integer sequence.
 
-
-Before we do so we remark for our amusement an expression for the adjoint
-of the Lefschetz operator that must be known but I had not seen before.
-
-\begin{coro}
-    \hfil
-    \qquad
-    $\Lambda = * L *$
-    \hfil
-    \phantom{\bf Corollary 1.7}
-\end{coro}
-
-\begin{proof}
-It is enough to prove the identity for $(p,q)$--forms $u = L\^{p-j} u_j$,
-where $u_j$ is a $(j,j+q-p)$--form and $p \leq q$. By setting $m = 2j+q-p$
-and applying Proposition~\ref{16} twice we get
-\begin{align*}
-    *L*u &= *L (-1)^{m(m+1)/2} L\^{n-j-q} u_j \\
-    &= * (-1)^{m(m+1)/2} \tbinom{n-j-q+1}{1} L\^{n-j-q+1} u_j \\
-    &= \tbinom{n-j-q+1}{1} L\^{p-j-1} u_j = \Lambda u,
-\end{align*}
-where the last equality holds by Proposition~\ref{prop:morphism}.
-\end{proof}
 
 
 \begin{proof}[Proof of Theorem~\ref{thm:norm}]
@@ -1053,6 +1035,130 @@ the integral of the inner product over the manifold and there all forms
 of bidegree other than $(n,n)$ disappear. Compare with the product of
 the Chern character and Todd class in Hirzebruch--Riemann--Roch theorem,
 where no one cares what the classes of degree $< 2n$ are.
+
+
+
+\section{Variation of K\"ahler structures}
+
+
+Let
+$$
+U = 
+\Bigl\{ \alpha = \beta + i \omega \in \bw{1,1}V^* 
+\Bigm\vert \Im \alpha = \omega \text{ is an inner product} 
+\Bigr\}
+$$
+be the space of complexified inner products on $V$. Let $E^{k} \to U$
+denote the trivial holomorphic vector bundle whose fiber is
+$\bw{k}V^{*}$. This bundle is equipped with a Hermitian metric $h$,
+defined at each point $\alpha$ by the inner product $\Im \alpha$. We would
+like to calculate the curvature tensor of $h$.
+
+We have
+$$
+(-1)^{k(k+1)/2}
+\la u,v \ra \, \omega\^n
+= 
+\pi_{n,n}\Bigl(
+\frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
+\wedge \exp(\omega)
+\Bigr),
+$$
+where $\pi_{n,n} : \bw{*} V^* \to \bw{n,n} V^*$ is the orthogonal
+projection into the subspace of $(n,n)$--forms. I hope the curvature
+calculations are formal and that the differential equation that the Bessel
+function $f$ satisfies gives that the metric $h$ is flat: The differential
+equation should let us remove the second derivatives of the metric tensor
+from the curvature form, so it should depend on its first derivatives
+only. Such a curvature form should be flat.
+
+First recall that the function $f$ is defined as
+$$
+f(z) = J_0(2\sqrt z),
+$$
+where $J_0$ is a Bessel function of the first order. As such it satisfies
+the differential equation
+$$
+z^{2} J_0'' + z J_0' + z^{2} J_0 = 0.
+$$
+This translates into
+$$
+-\tfrac 12 \sqrt z f'' + \sqrt z f' + z^{2} f = 0
+$$
+for the function $f$.
+
+
+
+\subsection*{Random thought}
+
+We think variation of K\"ahler structures is mirror to variation of Hodge
+structures. Hodge structures admit a filtration. What could a
+mirror filtration of K\"ahler structures be? A candidate is the filtration
+of $\bw{k}V^{*}$ by primitive forms, we could even patch it together into
+an increasing/decreasing filtration. These should probably not vary
+holomorphically, but how? Symplectically? (Does that even make sense?)
+
+
+
+\section{Variation of Hodge structures}
+
+
+Let $\pi : X \to S$ be a family of compact K\"ahler manifolds over a
+smooth base $S$. We denote by
+$$
+E^k = \RR^k \pi_* \ZZ \otimes_{\CC} \OO_S
+$$
+the holomorphic vector bundle whose fiber over a point $s$ is $E^k_s =
+H^k(X_s,\CC)$. Since this vector bundle is associated to a local system it
+is equipped with a flat connection $\nabla$, the Gauss--Manin connection.
+
+Let $[\omega_s]$ be a family of K\"ahler classes on $X$, so each
+$[\omega_s]$ is a K\"ahler class on $X_s$ and the classes vary smoothly
+with $s$. If we so wish, we can pick a smooth family of K\"ahler metrics
+$\omega_s$ so the cohomology class of $\omega_s$ is $[\omega_s]$. We then
+get a Hermitian inner product $h$ on $E^{k}$ defined either by using
+harmonic representatives of $k$--forms or by defining the inner product
+directly on the level of cohomology through $[\omega_s]$.
+
+Recall that the family $(X,[\omega])$ is \emph{polarized} if $\nabla
+[\omega] = 0$.
+
+
+\begin{prop}
+    If the family $(X,[\omega])$ is polarized then the Gauss--Manin
+connection is the Chern connection of $h$.
+\end{prop}
+
+
+\begin{proof}
+Let $u$ be a local section of $E^{k}$. We write $u = \sum L^{k-j}u_j$ for
+the fiberwise primitive decomposition of $u$ with respect to $[\omega]$. 
+Since each $u_j$ is a primitive $j$--class on each manifold in the family
+we have $L\^{n-j-1} u_j = 0$. This gives
+$$
+0 = \nabla(L\^{n-j-1} u_j) =  L\^{n-j-1} \nabla u_j
+$$
+because $\nabla$ and $L$ commute since the family is polarized, so
+$\nabla_\xi u_j$ is again a primitive $j$--class for any tangent field
+$\xi$ of $S$. Applying Weil's formula~\ref{16} now shows that 
+$\nabla\!\! *\! u = * \nabla u$. We can now conclude either by using 
+$$
+\langle u, v \rangle = \int_X  u \wedge * \overline v,
+$$
+or by noting that the above leads to $\nabla \Lambda = \Lambda \nabla$,
+so our formula for the inner product shows that $\nabla$ is compatible
+with $h$.
+\end{proof}
+
+
+A minor application is the seminegativity of all direct images
+$\RR^{p}\pi_* \OO_{X/S}$, since they are holomorphic subbundles of $E^k$
+by Griffiths. Slightly more generally the Hodge filtration of $E^{k}$ is
+composed of seminegative bundles. I wonder if Griffiths already proved
+that? (Griffiths at least proved that the quotient bundles of the Hodge
+filtration are seminegative, I don't think he mentioned the Hodge
+filtration itself. He used the Hodge--Riemann intersection form for this,
+not the inner product on cohomology.)
 
 
 \bibliographystyle{amsalpha}
