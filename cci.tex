@@ -18,31 +18,22 @@
 \title[The inner product of complex forms]
 {The inner product on exterior powers\\ of a complex vector space} 
 \author{Gunnar \TH\'{o}r Magn\'{u}sson}
+\email{gunnarthormagnusson@gmail.com}
 
 \def\^#1{^{[#1]}}
 \def\bw#1{\bigwedge{}^{\mkern-5mu #1}\mkern2mu}
 \def\I{\mathbf{I}}
-\def\la{\langle}
-\def\ra{\rangle}
-\def\Re{\operatorname{Re}}
-\def\Im{\operatorname{Im}}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Ric}{Ric}
 \DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Vol}{Vol}
 \def\ZZ{\mathbb{Z}}
-\def\FF{\mathbb{F}}
+\def\RR{\mathbb{R}}
 \def\CC{\mathbb{C}}
-\def\PP{\mathbb{P}}
-\def\R{\mathbb{R}}
-\def\RR{\mathcal{R}}
-\def\OO{\mathcal{O}}
-\def\KK{\mathcal{K}}
 \def\curv{\frac{i}{2\pi} \Theta}
-\def\llangle{\langle\!\langle}
-\def\rrangle{\rangle\!\rangle}
+\def\la{\langle}
+\def\ra{\rangle}
 
 \newtheorem{theo}{Theorem}[section]
 \newtheorem{prop}[theo]{Proposition}
@@ -80,10 +71,10 @@ Kobayashi--L\"{u}bke inequality for Hermite--Einstein bundles.
 
 
 Let $V$ be a complex vector space of dimension $n$, equipped with a
-Hermitian inner product whose positive $(1,1)$--form we denote by $\omega =
--\Im h$. The inner product on $V$ induces inner products on the exterior
-algebra $\bw{*} V^*$. If we denote the Hodge star operator by $*$, then
-this inner product is also defined~by%
+Hermitian inner product $h$ whose positive $(1,1)$--form we denote by
+$\omega = -\operatorname{Im} h$. The inner product on $V$ induces inner
+products on the exterior algebra $\bw{*} V^*$. If we denote the Hodge star
+operator by $*$, then this inner product is also defined~by%
 $$
 \langle u, v\rangle \, \omega\^n 
 = u \wedge *\overline v,
@@ -109,22 +100,22 @@ by decomposing the forms into primitive components. These formulas are
 no better for explicit calculations than the ones involving minors of
 matrices, but they come in handy when calculating things that let the
 inner product $\omega$ vary and give amusing matrix identities when
-written in local coordinates.
+written in an orthonormal~basis.%
 
 In this note we generalize the above formulas to arbitrary $(p,q)$--forms
 $u$ and $v$. In Theorem~\ref{thm:norm} we show that there exist integers
 $b_l$, independent of the vector space $V$, such that
 $$
     (-1)^{k(k+1)/2}
-    \langle u, \overline v \rangle \, \omega\^n
+    \langle u, v \rangle \, \omega\^n
     = \sum_{l=0}^n (-1)^{l} b_l \, 
-    (\Lambda\^l u \wedge \Lambda\^l \overline{\I v})
+    \Lambda\^l u \wedge \Lambda\^l \overline{\I v}
     \wedge \omega\^{n-k+2l}
 $$
 for any $k$--forms $u$ and $v$. The integers $b_l$ have actually been
 studied in quite a different context \cite{Carlitz,Riordan,OEIS}; they are
 the coefficients in the series expansion of the reciproqual of a Bessel
-function of the first order. 
+function of the first kind. 
 
 The proof of this result is mostly by formal calculations with the
 Lefschetz operator and its adjoint on the exterior algebra of $V$, the
@@ -144,10 +135,8 @@ We state and prove all our results on a
 finite-dimensional vector space $V$ equipped with a Hermitian inner
 product. However, since our calulations are formal the same proofs work 
 verbatim on a vector space $V$ equipped with a representation of
-$\mathfrak{sl}_2(\CC)$, such as the cohomology algebra of a compact
-K\"ahler manifold or a projective variety over a given field $k$ (modulo
-all our divisions by integers that are possibly zero in positive
-characteristic).
+$\mathfrak{sl}(2)$, such as the cohomology algebra of a compact
+K\"ahler manifold or a projective variety over a field $k$.
 \end{rema}
 
 
@@ -206,7 +195,7 @@ $$
     (-1)^{k(k+1)/2}
     \lvert u \rvert^2 \omega\^n
     = \sum_{l=0}^n (-1)^{l} b_l \, 
-    (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
+    \Lambda\^l u \wedge \Lambda\^l \overline{\I u}
     \wedge \omega\^{n-k+2l}.
 $$
 \end{theo}
@@ -421,15 +410,16 @@ X &= \operatorname{Span}(L\^{n-p-q+2l)}
 \\
 Y &= \operatorname{Span}(|L\^{p-j}u_j|^2 \omega\^{n} \mid j=0,\ldots,p).
 \end{align*}
-(By a Zariski-open argument we don't have to worry about one of these
-symbols being zero for a given form.)
-Proposition~\ref{prop:morphism} defines a linear morphism $A : X \to Y$; a
-morphism that only depends on the dimension of $V$ and the degree $p$, but
-is otherwise independent of the form $u$. Since $|u|^2\omega\^n = \sum
-|L\^{p-j}u_j| \omega\^n$,  the coefficients of the linear combination we
-seek are the coordinates of the vector $A^{-1}(1,\ldots,1)$. This
-observation shows that coefficients like the ones we seek exist, the task
-is now to show that they coincide with our integer sequence.
+(By a Zariski-open argument it is enough to prove our result on the
+open set of forms $u$ where all the above symbols are nonzero.)
+Proposition~\ref{prop:morphism} defines a linear morphism $A : X \to
+Y$; a morphism that only depends on the dimension of $V$ and the
+degree $p$, but is otherwise independent of the form $u$. Since
+$|u|^2\omega\^n = \sum |L\^{p-j}u_j| \omega\^n$, the coefficients of
+the linear combination we seek are the coordinates of the vector
+$A^{-1}(1,\ldots,1)$. This observation shows that coefficients like
+the ones we seek exist, the task is now to show that they coincide
+with our integer sequence.
 
 
 \begin{rema}
@@ -453,7 +443,7 @@ and write
 $$
 \lvert u \rvert^2 \omega\^n
 = \sum_{l=0}^n (-1)^{l + k(k+1)/2} b_l(p,n) \, 
-(\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
+\Lambda\^l u \wedge \Lambda\^l \overline{\I u}
 \wedge \omega\^{n-p-q+2l},
 $$
 where $b_l(p,n)$ is the coefficient whose existence is guaranteed by
@@ -507,7 +497,7 @@ $$
 }
 $$
 By comparing the coefficients of $\lvert L\^p u_0 \rvert^2$ in these
-two expressions we find that
+two expressions we~find%
 \begin{align*}
 1 &= 
 \sum_{l=0}^p (-1)^{l+p} b_l(p,n) 
@@ -541,8 +531,7 @@ depend on $n$, we conclude that $b_p$ doesn't depend on $n$ either.
 The defining recurrance relation \eqref{bezel} for the integers $b_l$,
 now shows that $b_p(p,n) = b_p$.
 
-Finally, we remark that by conjugating the form $u$, exchanging $p$ and
-$q$, and carefully calculating the resulting sign change, it is enough
+Finally, we remark that by conjugating the form $u$ it is enough
 to prove our formula for forms $u$ with $p \leq q$.
 \end{proof}
 
@@ -554,11 +543,14 @@ $$
 \la u, v \ra \, \omega\^n
 = \sum_{l=0}^{n} 
 (-1)^{l} b_l \, 
-(\Lambda\^l u) \wedge (\Lambda\^l \overline{\I v}) \wedge \omega\^{n-p-q+2l}.
+\Lambda\^l u \wedge \Lambda\^l \overline{\I v} \wedge \omega\^{n-p-q+2l}.
 $$
 \end{coro}
 
-
+\begin{proof}
+  Immediate from polarization.
+  \vadjust{\penalty-2000}
+\end{proof}
 
 
 \begin{exam}
@@ -570,7 +562,7 @@ knowledge.
 \smallskip
 \noindent
 (i)\quad
-For a $(2,2)$--form $u$ on $V$ we have
+For a real $(2,2)$--form $u$ on $V$ we have
 $$
 |u|^2 \omega\^{n}
 = u^2 \wedge \omega\^{n-4}
@@ -581,7 +573,7 @@ $$
 \smallskip
 \noindent
 (ii)\quad
-For a $(3,3)$--form $u$ our formula gives
+For a real $(3,3)$--form $u$ our formula gives
 $$
 |u|^2 \omega\^{n}
 = 
@@ -594,7 +586,7 @@ $$
 \smallskip
 \noindent
 (iii)\quad
-For a $(4,4)$--form $u$ we get
+For a real $(4,4)$--form $u$ we get
 $$
 \displaylines{
 |u|^2 \omega\^{n}
@@ -617,12 +609,11 @@ is also possible:
 
 
 \begin{coro}
-    If $u$ and $v$ are $(p,q)$--forms on $V$, then
+    If $u$ and $v$ are $(p,q)$--forms on $V$ and $k = p+q$, then
     $$
-    (-1)^{k(k+1)/2} u \wedge \overline{\I v} \wedge \omega\^{n-p-q}
+    (-1)^{k(k+1)/2} u \wedge \overline{\I v} \wedge \omega\^{n-k}
     = \sum_{m = 0}^n (-1)^{m} 
-    \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra
-    \wedge \omega\^{n-p-q-2m}.
+    \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra \, \omega\^{n}.
     $$
 \end{coro}
 
@@ -634,17 +625,16 @@ $\Lambda\^m u$ and $\Lambda\^m \I v$ into our formula gives
 $$
 \displaylines{
 (-1)^{k_m(k_m+1)/2} 
-\la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra
-\omega\^{n}
+\la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra \, \omega\^{n}
 \hfill\cr\hfill
 {} = \sum_{l=0}^{n} 
 (-1)^l b_l \, 
 \tbinom{l+m}{l}^2
 (\Lambda\^{l+m} u) \wedge (\Lambda\^{l+m} \overline{\I v}) 
-\wedge \omega\^{n-p-q+2(l+m)},
+\wedge \omega\^{n-k+2(l+m)},
 }
 $$
-where we write $k_m = p+q-2m$. Remark that 
+where we write $k_m = k-2m$. Remark that 
 $$
 (-1)^{k_m(k_m+1)/2} =
 (-1)^{k(k+1)/2} (-1)^m.
@@ -656,7 +646,7 @@ $$
 \displaylines{
     (-1)^{k(k+1)/2} 
     \sum_{m=0}^n
-    (-1)^{m} \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra
+    (-1)^{m} \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra \,
     \omega\^{n}
     \hfill\cr\noalign{\vskip-3pt}\hfill
     \jot=0pt
@@ -669,9 +659,9 @@ $$
     \tbinom{\nu}{l}^2
     \Bigr)
     (\Lambda\^{\nu} u) \wedge (\Lambda\^{\nu} \overline{\I v}) 
-    \wedge \omega\^{n-p-q+2\nu)}
+    \wedge \omega\^{n-k+2\nu}
     \cr\noalign{\vskip3pt}{}
-    &= u \wedge \overline{\I v} \wedge \omega\^{n-p-q},
+    &= u \wedge \overline{\I v} \wedge \omega\^{n-k},
 }
 }
 $$
@@ -679,12 +669,16 @@ because $\sum_{l=0}^{\nu} (-1)^l b_l \, \tbinom{\nu}{l}^2 = 0$ for all $\nu \geq
 \end{proof}
 
 
-
 \section{Curvature tensors and the Kobayashi--L\"{u}bke inequality}
 \label{sec:tw}
 
 
 \subsection*{Linear algebraic preliminaries}
+
+Morally speaking, we will be viewing the curvature form $R$ as a form
+defined on the total space of its vector bundle $E$ and equipping that
+space with a metric induced by the ones on the underlying space $X$
+and on $E$.
 
 Let $V$ and $E$ be complex vector space of dimensions $n$ and $r$, equipped
 with Hermitian metrics $\omega$ and $h$. Let $R$ be a curvature-type
@@ -733,7 +727,7 @@ $h\^k$ is; this can be seen by comparing the norms of $\id_{\wedge^k
 E}$ and its image $h\^k$. We now want to find a morphism
 $\bigwedge^{1,1} \! E \to \bigwedge^{k,k} \! E$ that makes the diagram
 $$
-\xymatrix@C+10pt{
+\xymatrix@C+10pt@R-3pt{
     \End E \ar[r]^-{f \mapsto \wedge^k f} \ar[d]^{h \otimes \id_{E^*}} & 
     \End \bigwedge^{k} \! E \ar[d]^{h\^k \otimes \id_{\wedge^k E^*}} \\
     \bigwedge^{1,1} \! E \ar@{-->}[r] 
@@ -741,14 +735,15 @@ $$
 }
 $$
 commute. This morphism is clearly $u \mapsto u^k / k!$, whence the factor
-of $k!$ above.
+of $k!$~above.%
+\vadjust{\penalty-2000}
 
 
 
 \subsection*{The norm of a curvature tensor}
 
-Our first result here is on the norm of a curvature tensor of a vector
-bundle. This equality is implicit in the literature on the
+Here we calculate the norm of a curvature tensor of a vector
+bundle. The identity we find is implicit in the literature on the
 Kobayashi--L\"{u}bke inequality (compare with \cite{Chen-Ogiue},
 \cite{Lubke} and \cite{Siu}); the inequality is actually a corollary of a
 simple application of Cauchy--Schwarz to the equation for the norm of the
@@ -780,13 +775,8 @@ $(E,h)$.
 write $V = T_{X,x}$, abuse notation to write $E = E_{x}$ and write $R$
 for the image of $\curv$ under the isometry $\bigwedge^{1,1} \! T_X
 \otimes \End E \to \bigwedge^{2,2} (T_X \otimes E)^*$ defined by $h$. Then
-$R$ is a $(2,2)$--form on $V \oplus E$.\footnote{Morally speaking, this
-amounts to viewing $\curv$ as a form defined on the total space of the
-vector bundle $E$ and equipping that space with a metric induced by the
-ones on $X$ and $E$. Since the vector bundle is holomorphically locally
-trivial, its tangent bundle splits holomorphically into pullbacks of $E$
-and $T_X$ to the total space of $E$, so this viewpoint poses no global
-problems.} We write $\alpha = \omega + h$ for the induced inner product on
+$R$ is a $(2,2)$--form on $V \oplus E$.
+We write $\alpha = \omega + h$ for the induced inner product on
 $V \oplus E$, in slight abuse of notation.
 
 The norm of $R$ as a $(2,2)$--form on $V \oplus E$ is
@@ -925,18 +915,38 @@ n(\lvert r_0 \omega \wedge h \rvert^2
 + \lvert r_2 \rvert^2 )
 = n \lvert R \rvert^2
 \end{align*}
-with equality if and only if $R = u \wedge \omega$ for a form $u$ that's a pullback from $E$.
+with equality if and only if $R = u \wedge \omega$ for a form $u$
+that's a pullback from~$E$.%
 \end{proof}
 
 
 \begin{exam}
-Let $\omega$ be the Fubini--Study metric on $\PP^n$.  Then $c_k = (-1)^k
-\binom{n+1}{k} \omega^k$ and $\Ric \omega = (n+1)\omega$. This gives
+(1) Let $(X,\omega)$ be a K\"ahler--Einstein manifold, so that $\Ric \omega
+= \lambda \omega$ for some $\lambda \in \RR$. Then%
 $$
-    0 \leq
-    \Bigl\lvert \curv_{\omega_{\mathrm{FS}}} \Bigr\rvert^2 \omega\^n
-     = (2 c_2 - c_1^2) \wedge \omega\^{n-2} + n(n+1)^2 \omega\^{n}
-    = 2n(n-1)\, \omega\^n.
+\lvert R \rvert^2 \omega\^n
+= c_2 \wedge \omega\^{n-2} + (n \lambda)^2 \omega\^n,
+$$
+where $c_2$ is the second Chern form defined by $\omega$.
+
+\smallskip
+(2) Let $(X,\omega)$ now be a K\"ahler manifold of constant sectional
+curvature $\lambda$; like projective space with the Fubini--Study
+metric, a torus with its flat metric or the unit ball with the Bergman
+metric. Then the curvature tensor of $\omega$ is
+$$
+R_{jklm} = \lambda(\omega_{jk}\omega_{lm} - \omega_{jl}\omega_{mk})
+$$
+in local coordinates and we have $\Ric \omega =
+\lambda(n-1)\,\omega$. Some calculations give
+$$
+|R|^2 
+= 2n(n-1) \lambda^2,
+$$
+so we see that
+$$
+c_2 \wedge \omega\^{n-2}
+= -\lambda^2(n-2)(n-1)n(n+1)\,\omega\^n.
 $$
 \end{exam}
 
@@ -945,16 +955,19 @@ $$
 The original motivation for all of this was that I didn't understand
 where the differential-geometric proofs of the Kobayashi--L\"{u}bke
 inequality came from, since they all brutally calculate things in local
-coordinates. I also thought that if I found a more coordinate-invariant
-proof of the inequality it would be possible to use it to find inequalities
-involving higher Chern classes, because if calculating $|\curv|^2$ gives an
-inequality involving $c_2$ then calculating $|\bw{k}\curv|^2$ should give
-an inequality involving $c_{2k}$. Unfortunately this does not seem to be
-possible, basically because we cannot calculate $\Lambda(u \wedge v)$ or
-$*(u \wedge v)$ in terms of $u$, $v$ and $\Lambda$ or $*$. I leave to the
-reader the pleasure of trying to estimate $|\bw{k}\curv|^2$ in terms of
+coordinates. I also naively thought that if I found a more
+coordinate-invariant proof of the inequality it would be possible to
+use it to find inequalities involving higher Chern classes, because if
+calculating $|\curv|^2$ gives an inequality involving $c_2$ then
+calculating $|\bw{k}\curv|^2$ should give an inequality involving
+$c_{2k}$. Unfortunately this does not seem to be possible, basically
+because we cannot calculate $\Lambda(u \wedge v)$ or $*(u \wedge v)$
+in terms of $u$, $v$ and $\Lambda$ or $*$, which again is not possible
+because the wedge product of primitive forms is not primitive. I leave to
+the reader the pleasure of trying to estimate $|\bw{k}\curv|^2$ in terms of
 things we know and are interested in and seeing where things go wrong.
 \end{rema}
+
 
 
 \bibliographystyle{amsalpha}
