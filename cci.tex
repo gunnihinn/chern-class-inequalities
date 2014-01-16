@@ -178,7 +178,7 @@ Consider the sequence of integers defined recursively by $b_0 = 1$ and
 \end{equation}
 for $p \geq 1$. This is sequence number A000275 in the \textsl{On-line
 encyclopedia of integer sequences}~\cite{OEIS}; see also \cite{Carlitz}
-and \cite{Riordan} for perhaps unrelated information about the sequence.
+and \cite{Riordan} for not unrelated information about the sequence.
 Its first few values are: 
 $$
 1 \quad 1 \quad 3 \quad 19 \quad 211 \quad 3651 \quad
@@ -326,7 +326,8 @@ decomposition of a $(p,q)$--form $u$, where $p \leq q$ and each $u_j$ is a
 primitive $(j,j+q-p)$--form. Then
 $$
 \displaylines{
-    L\^{n-p-q+2l}( \Lambda\^l u \wedge \Lambda\^l \overline{\I u})
+    \Lambda\^l u \wedge \Lambda\^l \overline{\I u}
+    \wedge \omega\^{n-p-q+2l}
     \hfill\cr\hfill{}
     = \sum_{j=0}^{p-l} 
     (-1)^j
@@ -345,7 +346,8 @@ We first apply Proposition~\ref{16} to our $(p,q)$--form
 $u = \sum_j L\^{p-j} u_j = \sum_j (u_j/(p-j)!) \wedge \omega^{p-j}$.
 That gives
 \begin{align*}
-L\^{n-p-q} (u \wedge \overline{\I u})
+u \wedge \overline{\I u}
+\wedge \omega\^{n-p-q} 
 &= \sum_{j=0}^p \frac{1}{(n-p-q)!}
 \Bigl( \frac{u_j\wedge \overline{\I u_j}}{(p-j)!^2} \Bigr) 
 \wedge \omega^{n-2j-q+p}\\
@@ -368,7 +370,8 @@ $\Lambda\^l u$. That gives (by letting $p \mapsto p - l$, $q \mapsto q
 - l$)
 $$
 \displaylines{
-  L\^{n-p-q+l} (\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
+  \Lambda\^l u \wedge \Lambda\^l \overline{\I u}
+  \wedge \omega\^{n-p-q+l} 
   \hfill\cr\hfill
   \jot=0pt
   \eqalign{
@@ -405,8 +408,10 @@ This last result is the key to proving what we want. It tells us how to
 write the square of the norm of a $(p,q)$--form $u$ with $p \leq q$ as
 a linear combination of traces of the form: Define two vector spaces
 \begin{align*}
-X &= \operatorname{Span}(L\^{n-p-q+2l)} 
-(\Lambda\^l u \wedge \Lambda\^l \overline{\I u}) \mid l = 0,\ldots,p),
+X &= \operatorname{Span}(
+\Lambda\^l u \wedge \Lambda\^l \overline{\I u} 
+\wedge \omega\^{n-p-q+2l} 
+\mid l = 0,\ldots,p),
 \\
 Y &= \operatorname{Span}(|L\^{p-j}u_j|^2 \omega\^{n} \mid j=0,\ldots,p).
 \end{align*}
@@ -432,8 +437,8 @@ Proposition~\ref{prop:morphism}. Once there, we calculated
 $A^{-1}(1,\ldots,1)$ for $(1,1)$, $(2,2)$, $(3,3)$, $(4,4)$ and
 $(5,5)$--forms with the help of computer algebra software, from which we
 guessed that the coefficients were in fact independent of the vector space.
-Searching the OEIS then revealed what integer sequence they probably came
-from, and from there it was not difficult to prove the main result.
+Searching the OEIS then revealed the coefficients probably formed a known
+sequence, and from there it was not difficult to prove the main result.  
 \end{rema}
 
 
@@ -469,7 +474,7 @@ $$
 \displaylines{
 \lvert u \rvert^2 \omega\^n 
 = \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) \, 
-(\Lambda\^l u \wedge \Lambda\^l \overline{\I u})
+\Lambda\^l u \wedge \Lambda\^l \overline{\I u}
 \wedge \omega\^{n-2(p-l)}
 \hfill\cr
 \phantom{\lvert u \rvert^2 \omega\^n}
@@ -557,7 +562,7 @@ $$
 In addition to the well-known formula for the square of the norm of a
 $(1,1)$--form, Theorem~\ref{thm:norm} gives these formulas for the norms
 of higher-degree forms, that have not appeared before to the best of my
-knowledge.
+knowledge. We write them for real forms only to simplify notation.
 
 \smallskip
 \noindent
@@ -723,11 +728,16 @@ that is the set of $(1,1)$--forms $\alpha + i\omega$, where $\alpha$ and
 $\omega$ are real and $\omega$ is an inner product. We have a trivial
 holomorphic vector bundle $F^k \to U$ whose fiber is the space of
 $k$--forms on $V$, and the inner products $\omega$ define a Hermitian
-metric $h$ on $F^k$. It is quite tempting to use the differential equation
-that $J_0$ satisfies to say something about the curvature tensor of $h$,
-but in practice this seems difficult at best and should in fact depend
-heavily on how the space of primitive $k$--forms varies with $\omega$
-inside $\bw{k}V^*$. The preprint \cite{HuyArx} may be useful here.
+metric $h$ on $F^k$. The words ``mirror symmetry'' may be waived
+around here in certain crowds (but then we should perhaps look at $G^k
+\!=\!\!
+\smash{\bigoplus\limits_{p - q = k} \bw{p,q} V^*}$ instead of $F^k$).
+
+It is tempting to use the differential equation that $J_0$ satisfies
+to say something about the curvature tensor of $h$, but in practice this
+seems difficult at best and should in fact depend heavily on how the space
+of primitive $k$--forms varies with $\omega$ inside $\bw{k}V^*$. The
+preprint \cite{HuyArx} may be useful here.
 \end{rema}
 
 
@@ -793,7 +803,7 @@ $h\^k$ is; this can be seen by comparing the norms of $\id_{\wedge^k
 E}$ and its image $h\^k$. We now want to find a morphism
 $\bigwedge^{1,1} \! E \to \bigwedge^{k,k} \! E$ that makes the diagram
 $$
-\xymatrix@C+10pt@R-3pt{
+\xymatrix@C+10pt{
     \End E \ar[r]^-{f \mapsto \wedge^k f} \ar[d]^{h \otimes \id_{E^*}} & 
     \End \bigwedge^{k} \! E \ar[d]^{h\^k \otimes \id_{\wedge^k E^*}} \\
     \bigwedge^{1,1} \! E \ar@{-->}[r] 
