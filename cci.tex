@@ -669,16 +669,82 @@ because $\sum_{l=0}^{\nu} (-1)^l b_l \, \tbinom{\nu}{l}^2 = 0$ for all $\nu \geq
 \end{proof}
 
 
+\begin{rema}
+Our formula for the inner product is given by numbers related to Bessel
+functions. It is possible to write our results in compact form by letting
+those functions define sesquilinear operators on $V$. For this, let 
+$$
+f(z) = J_0(2\sqrt z) = \sum_{m\geq0} (-1)^m \frac{1}{m!^2} z^m.
+$$
+This is a Bessel function of the first kind and if we set $z = xy$ and look at its reciproque we find
+$$
+\frac{1}{f(xy)} = \sum_{l\geq 0} (-1)^l b_l\, x\^l y\^l;
+$$
+see \cite{Carlitz,Riordan}. This function defines a sesquilinear operator
+on $\bw{*} V^*$ if we declare that 
+$$
+x\^a y\^b(\Lambda,\Lambda) 
+:= (u,v) \mapsto \Lambda\^a u \wedge \Lambda\^b \overline v.
+$$ 
+We can then write
+$$
+\eqalign{
+(-1)^{k(k+1)/2} u \wedge \overline{\I v} \wedge \omega\^{n-p-q}
+    &= 
+    \pi_{n,n}\Bigl(
+    f(xy)(\Lambda,\Lambda)(u,\overline{\I v})
+    \wedge \exp(\omega)
+    \Bigr),
+    \cr
+(-1)^{k(k+1)/2}
+\la u,v \ra \, \omega\^n
+&= 
+\pi_{n,n}\Bigl(
+\frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
+\wedge \exp(\omega)
+\Bigr),
+}
+$$
+where $\pi_{n,n} : \bw{*} V^* \to \bw{n,n} V^*$ is the 
+projection onto the subspace of $(n,n)$--forms. In applications we would
+most likely consider differential forms on a manifold $X$ and be
+interested in the global inner product $\langle\!\langle u,v
+\rangle\!\rangle = \int_X \langle u,v\rangle \, \omega\^n$ instead of the
+pointwise one. There integrating automatically kills all but the
+top-degree forms, so we can write
+$$
+(-1)^{k(k+1)/2} \langle\!\langle u,v \rangle\!\rangle 
+= \int_X \frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
+\wedge \exp(\omega).
+$$
+
+Consider now the set $U$ of complexified Hermitian inner products on $V$,
+that is the set of $(1,1)$--forms $\alpha + i\omega$, where $\alpha$ and
+$\omega$ are real and $\omega$ is an inner product. We have a trivial
+holomorphic vector bundle $F^k \to U$ whose fiber is the space of
+$k$--forms on $V$, and the inner products $\omega$ define a Hermitian
+metric $h$ on $F^k$. It is quite tempting to use the differential equation
+that $J_0$ satisfies to say something about the curvature tensor of $h$,
+but in practice this seems difficult at best and should in fact depend
+heavily on how the space of primitive $k$--forms varies with $\omega$
+inside $\bw{k}V^*$. The preprint \cite{HuyArx} may be useful here.
+\end{rema}
+
+
+
+
 \section{Curvature tensors and the Kobayashi--L\"{u}bke inequality}
 \label{sec:tw}
 
 
 \subsection*{Linear algebraic preliminaries}
 
-Morally speaking, we will be viewing the curvature form $R$ as a form
-defined on the total space of its vector bundle $E$ and equipping that
-space with a metric induced by the ones on the underlying space $X$
-and on $E$.
+In this section, we will (morally speaking) be viewing the curvature form
+$R$ as a form defined on the total space of its vector bundle $E$ and
+equipping that space with a metric induced by the ones on the underlying
+space $X$ and on $E$. This lets us use the Hodge star and Lefschetz
+operators on that bigger space and apply the results from
+Section~\ref{sec:on}.
 
 Let $V$ and $E$ be complex vector space of dimensions $n$ and $r$, equipped
 with Hermitian metrics $\omega$ and $h$. Let $R$ be a curvature-type
