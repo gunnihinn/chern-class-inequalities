@@ -1,6 +1,4 @@
 \documentclass[11pt,a4paper]{amsart}
-
-
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -10,16 +8,15 @@
 \usepackage[pdftex]{hyperref}
 \usepackage{setspace}
 \usepackage[all]{xy}
-\usepackage{graphicx}
-\usepackage{multirow}
 
-\setstretch{1.1}
-
+% Metadata
 \title[The inner product of complex forms]
 {The inner product on exterior powers\\ of a complex vector space} 
 \author{Gunnar \TH\'{o}r Magn\'{u}sson}
 \email{gunnarthormagnusson@gmail.com}
 
+% Macros
+\setstretch{1.1}
 \def\^#1{^{[#1]}}
 \def\bw#1{\bigwedge{}^{\mkern-5mu #1}\mkern2mu}
 \def\I{\mathbf{I}}
@@ -35,16 +32,22 @@
 \def\la{\langle}
 \def\ra{\rangle}
 
+% Theorems
+\newtheoremstyle{slthm}{6pt}{6pt}{\slshape}{0pt}{\bf}{}{1em}{}
+\newtheoremstyle{sldef}{6pt}{6pt}{}{0pt}{\bf}{}{1em}{}
+\newtheoremstyle{slrem}{6pt}{6pt}{}{0pt}{\slshape}{\hskip1ex---}{1ex}{}
+\theoremstyle{slthm}
 \newtheorem{theo}{Theorem}[section]
 \newtheorem{prop}[theo]{Proposition}
 \newtheorem{coro}[theo]{Corollary}
 \newtheorem*{claim}{Claim}
-\theoremstyle{definition}
+\theoremstyle{sldef}
 \newtheorem{exam}[theo]{Example}
-\theoremstyle{remark}
+\theoremstyle{slrem}
 \newtheorem*{rema}{Remark}
 \numberwithin{equation}{section}
 
+% TeX's eqalign environment
 \makeatletter
 \def\eqalign#1{%
  \null\,\vcenter{\openup\jot\m@th
@@ -72,8 +75,8 @@ Kobayashi--L\"{u}bke inequality for Hermite--Einstein bundles.
 
 Let $V$ be a complex vector space of dimension $n$, equipped with a
 Hermitian inner product $h$ whose positive $(1,1)$--form we denote by
-$\omega = -\operatorname{Im} h$. The inner product on $V$ induces inner
-products on the exterior algebra $\bw{*} V^*$. If we denote the Hodge star
+$\omega = -\operatorname{Im} h$. The inner product on $V$ induces an inner
+product on the exterior algebra $\bw{*} V^*$. If we denote the Hodge star
 operator by $*$, then this inner product is also defined~by%
 $$
 \langle u, v\rangle \, \omega\^n 
@@ -204,7 +207,7 @@ We will actually prove this result for a $(p,q)$--form $u$ with $p \leq q$
 and $p+q = k$. By conjugation the restriction $p \leq q$ is irrelevant and
 it is just a matter of basic combinatorics and degree reasoning to see
 that if the result holds for $(p,q)$--forms with $p + q = k$ then it also
-holds for a $k$--form, i.e., that the right-hand side respects the
+holds for $k$--forms, i.e., that the right-hand side respects the
 orthogonal decomposition of $\bw{k}V^*$.  Proving this result demands a
 certain amount of preparation, all of which rests on the following formula.
 
@@ -471,13 +474,15 @@ Let's record for immediate use that if $p \leq q$ then
 $(-1)^{(q-p)(q-p+1)/2} = (-1)^p(-1)^{(p+q)(p+q+1)/2}$. Then we can also write
 the above as
 $$
+\def\bil{\mkern26mu}
 \displaylines{
 \lvert u \rvert^2 \omega\^n 
+\hfill\cr\noalign{\vskip-3pt}\bil
+{}
 = \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) \, 
 \Lambda\^l u \wedge \Lambda\^l \overline{\I u}
 \wedge \omega\^{n-2(p-l)}
-\hfill\cr
-\phantom{\lvert u \rvert^2 \omega\^n}
+\hfill\cr\bil
 {}= \sum_{l=0}^n (-1)^{k(k+1)/2+l} b_l(p,n) 
 \sum_{j=0}^l 
 (-1)^{j}
@@ -488,8 +493,8 @@ $$
   \tbinom{n-j-q+l}{l}
   \lvert L\^{p-j} u_j \rvert^2
   \wedge \omega\^ n
-\cr
-\phantom{\lvert u \rvert^2 \omega\^n}
+  \phantom{.}
+\cr\quad\hfill
 {}= \sum_{l=0}^n (-1)^{l+p} b_l(p,n) \, 
 \sum_{j=0}^l 
 (-1)^j
@@ -498,7 +503,6 @@ $$
   \tbinom{n-j-q+l}{l}
   \lvert L\^{p-j} u_j \rvert^2
   \wedge \omega\^ n.
-  \hfill
 }
 $$
 By comparing the coefficients of $\lvert L\^p u_0 \rvert^2$ in these
@@ -562,7 +566,7 @@ $$
 In addition to the well-known formula for the square of the norm of a
 $(1,1)$--form, Theorem~\ref{thm:norm} gives these formulas for the norms
 of higher-degree forms, that have not appeared before to the best of my
-knowledge. We write them for real forms only to simplify notation.
+knowledge. We a few here, for real forms to simplify notation.
 
 \smallskip
 \noindent
@@ -653,7 +657,7 @@ $$
     \sum_{m=0}^n
     (-1)^{m} \la \Lambda\^m u , \Lambda\^m \overline{\I v} \ra \,
     \omega\^{n}
-    \hfill\cr\noalign{\vskip-3pt}\hfill
+    \hfill\cr\noalign{\vskip-5pt}\hfill
     \jot=0pt
     \eqalign{
     {} &= 
@@ -677,7 +681,7 @@ because $\sum_{l=0}^{\nu} (-1)^l b_l \, \tbinom{\nu}{l}^2 = 0$ for all $\nu \geq
 \begin{rema}
 Our formula for the inner product is given by numbers related to Bessel
 functions. It is possible to write our results in compact form by letting
-those functions define sesquilinear operators on $V$. For this, let 
+holomorphic functions define sesquilinear operators on $V$. For this, let 
 $$
 f(z) = J_0(2\sqrt z) = \sum_{m\geq0} (-1)^m \frac{1}{m!^2} z^m.
 $$
@@ -711,12 +715,12 @@ $$
 }
 $$
 where $\pi_{n,n} : \bw{*} V^* \to \bw{n,n} V^*$ is the 
-projection onto the subspace of $(n,n)$--forms. In applications we would
-most likely consider differential forms on a manifold $X$ and be
-interested in the global inner product $\langle\!\langle u,v
-\rangle\!\rangle = \int_X \langle u,v\rangle \, \omega\^n$ instead of the
-pointwise one. There integrating automatically kills all but the
-top-degree forms, so we can write
+projection onto the subspace of $(n,n)$--forms and $\exp(\omega) :=
+\sum_{k\geq0} \omega\^k$. In applications we would most likely consider
+differential forms on a manifold $X$ and be interested in the global inner
+product $\langle\!\langle u,v \rangle\!\rangle = \int_X \langle u,v\rangle \,
+\omega\^n$ instead of the pointwise one. There integration 
+kills all but the top-degree forms, so we can write
 $$
 (-1)^{k(k+1)/2} \langle\!\langle u,v \rangle\!\rangle 
 = \int_X \frac{1}{f(xy)}(\Lambda,\Lambda)(u,\overline{\I v})
@@ -731,7 +735,7 @@ $k$--forms on $V$, and the inner products $\omega$ define a Hermitian
 metric $h$ on $F^k$. The words ``mirror symmetry'' may be waived
 around here in certain crowds (but then we should perhaps look at $G^k
 \!=\!\!
-\smash{\bigoplus\limits_{p - q = k} \bw{p,q} V^*}$ instead of $F^k$).
+\smash{\bigoplus\limits_{p - q = n - k} \bw{p,q} V^*}$ instead of $F^k$).
 
 It is tempting to use the differential equation that $J_0$ satisfies
 to say something about the curvature tensor of $h$, but in practice this
@@ -747,8 +751,9 @@ preprint \cite{HuyArx} may be useful here.
 \label{sec:tw}
 
 
-\subsection*{Linear algebraic preliminaries}
-
+\noindent
+\textbf{Linear algebraic preliminaries}
+\hskip1em
 In this section, we will (morally speaking) be viewing the curvature form
 $R$ as a form defined on the total space of its vector bundle $E$ and
 equipping that space with a metric induced by the ones on the underlying
@@ -815,9 +820,10 @@ of $k!$~above.%
 \vadjust{\penalty-2000}
 
 
-
-\subsection*{The norm of a curvature tensor}
-
+\smallskip
+\noindent
+\textbf{The norm of a curvature tensor}
+\hskip1em
 Here we calculate the norm of a curvature tensor of a vector
 bundle. The identity we find is implicit in the literature on the
 Kobayashi--L\"{u}bke inequality (compare with \cite{Chen-Ogiue},
@@ -1030,11 +1036,11 @@ $$
 \begin{rema}
 The original motivation for all of this was that I didn't understand
 where the differential-geometric proofs of the Kobayashi--L\"{u}bke
-inequality came from, since they all brutally calculate things in local
-coordinates. I also naively thought that if I found a more
-coordinate-invariant proof of the inequality it would be possible to
-use it to find inequalities involving higher Chern classes, because if
-calculating $|\curv|^2$ gives an inequality involving $c_2$ then
+inequality came from (see \cite{Chen-Ogiue,Lubke,Siu}), since they all
+brutally calculate things in local coordinates. I also naively thought that
+if I found a more coordinate-invariant proof of the inequality it would be
+possible to use it to find inequalities involving higher Chern classes,
+because if calculating $|\curv|^2$ gives an inequality involving $c_2$ then
 calculating $|\bw{k}\curv|^2$ should give an inequality involving
 $c_{2k}$. Unfortunately this does not seem to be possible, basically
 because we cannot calculate $\Lambda(u \wedge v)$ or $*(u \wedge v)$
